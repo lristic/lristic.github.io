@@ -1,0 +1,575 @@
+<!DOCTYPE HTML>
+
+<html>
+	<head>
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-150204435-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-150204435-1');
+</script>
+
+		<title>Building a simple form with PHP and MySQL</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+        
+		
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"/>
+        
+        <link rel="apple-touch-icon" sizes="180x180" href="../../images/favicon/apple-icon-180x180.png">
+        <link rel="icon" type="image/png" sizes="192x192"  href="../../images/favicon/android-icon-192x192.png">
+        <link rel="icon" type="image/png" sizes="96x96" href="../../images/favicon/favicon-96x96.png">
+        
+        <link rel="manifest" href="../../images/favicon/manifest.json">
+        <meta name="msapplication-TileColor" content="#ffffff">
+        <meta name="msapplication-TileImage" content="../../images/favicon/ms-icon-144x144.png">
+        <meta name="theme-color" content="#ffffff">
+        
+        <link rel="stylesheet" href="../../assets/css/main.css" />
+        
+	</head>
+	<style>
+        .post p{
+            font-size: 20px;
+        }
+    </style>
+	<body class="single is-preload">
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Header -->
+					<header id="header">
+						<h1><a style="font-size: 15px;text-transform:lowercase" href="http://lazar-ristic.info" target="_blank">&lt;lristic&gt;</a></h1>
+						<nav class="links">
+							<ul>
+                                
+								<li><a href="../html/index.html">HTML<i class="fab fa-html5"></i></a></li>
+                                <li><a href="../css/index.html">CSS<i class="fab fa-css3-alt"></i></a></li>
+                                <li><a href="../js/index.html">JS<i class="fab fa-js-square"></i></a></li>
+                                <li><a href="../php/index.html">PHP<i class="fab fa-php"></i></a></li>
+				            </ul>
+						</nav>
+                       
+                        
+				
+
+					</header>
+
+				
+					<div id="main">
+                        
+                        <nav class="links2">
+                       <h4 style="text-align: left;">Categories:</h4>
+							<ul>
+								<li><a href="../html/index.html">HTML<i class="fab fa-html5 ikonice"></i></a></li>
+                               
+                                <li><a href="../css/index.html">CSS<i class="fab fa-css3-alt ikonice"></i></a></li>
+                                
+                                <li><a href="../js/index.html">JS<i class="fab fa-js-square ikonice"></i></a></li>
+                                
+                                <li><a href="../php/index.html">PHP<i class="fab fa-php ikonice"></i></a></li>
+                                
+				            </ul>
+						</nav>
+
+						<!-- Post -->
+							<article class="post">
+								<header>
+									<div class="title">
+										<h2>Building a simple form using PHP and MySQL</h2>
+                                        <h4>Part 3</h4>
+										
+									</div>
+									<div class="meta">
+										<time class="published" datetime="2019-10-16">February 20, 2020</time>
+										<a href="http://lazar-ristic.info" target="_blank" class="author"><span class="name">Lazar Ristić</span><img src="../../images/avatar.jpg" alt="" /></a>
+										<i style="font-size: 50px;color:#9275e2" class="fab fa-php"></i>
+									</div>
+								</header>
+                                
+                                
+								<!---<span class="image featured"><img src="images/pic01.jpg" alt="" /></span>-->
+								<p>In the previous article, we managed to construct a query depending on the parameters that were inputted in the form. In this article we will add an error message if none of the form fields were filled.
+								</p>
+								
+                              <p>We got the hard part out the way, now it's the easy one. All we have to do here is initialize new variables called <code>$locationError, $priceError, $sizeError</code> to an empty string and check whether none of them was inputted. We do this after building our SQL query and before preparing the statement. </p>
+                              <p>We had the <code>if(isset($_POST['location']) && $_POST['location'] != ""){//code}</code> and now we add the <b>else</b> part of it: <code>else{$locationError = "Location not inputted."}</code>. We do this for all three parameters and then we check if all of them are not empty: <code>if($locationError != "" && $priceError != "" && $sizeError != "")</code>. This means that the user didn't input anything and so in this if block we throw an exception: <code>throw new PDOException();</code>. In the <b>else</b> part of this if block, put all the statements starting with <code>$statement = $connection->prepare($sql);</code> and everything under it. In this way we will not prepare a statement and do anything with it if we don't have at least one parameter inputted. Code:</p>
+                              
+                              <!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin: 0; line-height: 125%"> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76</pre></td><td><pre style="margin: 0; line-height: 125%"><span style="color: #557799">&lt;?php</span>
+    <span style="color: #008800; font-weight: bold">if</span>(<span style="color: #007020">isset</span>(<span style="color: #996633">$_POST</span>[<span style="background-color: #fff0f0">&#39;submit&#39;</span>])){
+        <span style="color: #008800; font-weight: bold">try</span>{
+            <span style="color: #008800; font-weight: bold">require</span> <span style="background-color: #fff0f0">&quot;config.php&quot;</span>;
+            
+            <span style="color: #996633">$connection</span> <span style="color: #333333">=</span> <span style="color: #008800; font-weight: bold">new</span> PDO(<span style="color: #996633">$dsn</span>, <span style="color: #996633">$username</span>, <span style="color: #996633">$password</span>, <span style="color: #996633">$options</span>);
+            
+            <span style="color: #996633">$sql</span> <span style="color: #333333">=</span> <span style="background-color: #fff0f0">&quot;SELECT *</span>
+<span style="background-color: #fff0f0">                    FROM houses</span>
+<span style="background-color: #fff0f0">                    WHERE&quot;</span>;
+            
+            <span style="color: #996633">$location</span> <span style="color: #333333">=</span> <span style="background-color: #fff0f0">&quot;&quot;</span>;
+            <span style="color: #996633">$size</span> <span style="color: #333333">=</span> <span style="background-color: #fff0f0">&quot;&quot;</span>;
+            <span style="color: #996633">$price</span> <span style="color: #333333">=</span> <span style="background-color: #fff0f0">&quot;&quot;</span>;
+            <span style="color: #996633">$locationError</span> <span style="color: #333333">=</span> <span style="background-color: #fff0f0">&quot;&quot;</span>;
+            <span style="color: #996633">$sizeError</span> <span style="color: #333333">=</span> <span style="background-color: #fff0f0">&quot;&quot;</span>;
+            <span style="color: #996633">$priceError</span> <span style="color: #333333">=</span> <span style="background-color: #fff0f0">&quot;&quot;</span>;
+                        
+            <span style="color: #008800; font-weight: bold">if</span>(<span style="color: #007020">isset</span>(<span style="color: #996633">$_POST</span>[<span style="background-color: #fff0f0">&#39;location&#39;</span>]) <span style="color: #333333">&amp;&amp;</span> <span style="color: #996633">$_POST</span>[<span style="background-color: #fff0f0">&#39;location&#39;</span>] <span style="color: #333333">!=</span> <span style="background-color: #fff0f0">&quot;&quot;</span>){
+                <span style="color: #996633">$location</span> <span style="color: #333333">=</span> <span style="color: #996633">$_POST</span>[<span style="background-color: #fff0f0">&#39;location&#39;</span>];
+                <span style="color: #996633">$sql</span> <span style="color: #333333">=</span> <span style="color: #996633">$sql</span> <span style="color: #333333">.</span> <span style="background-color: #fff0f0">&quot; location = :location&quot;</span>;
+            }<span style="color: #008800; font-weight: bold">else</span>{
+                <span style="color: #996633">$locationError</span> <span style="color: #333333">=</span> <span style="background-color: #fff0f0">&quot;Location was not inputted.&quot;</span>;
+            }
+            
+            <span style="color: #008800; font-weight: bold">if</span>(<span style="color: #007020">isset</span>(<span style="color: #996633">$_POST</span>[<span style="background-color: #fff0f0">&#39;price&#39;</span>]) <span style="color: #333333">&amp;&amp;</span> <span style="color: #996633">$_POST</span>[<span style="background-color: #fff0f0">&#39;price&#39;</span>] <span style="color: #333333">!=</span> <span style="background-color: #fff0f0">&quot;&quot;</span>){
+                <span style="color: #996633">$price</span> <span style="color: #333333">=</span> <span style="color: #996633">$_POST</span>[<span style="background-color: #fff0f0">&#39;price&#39;</span>];
+                <span style="color: #008800; font-weight: bold">if</span>(<span style="color: #996633">$location</span> <span style="color: #333333">!=</span> <span style="background-color: #fff0f0">&quot;&quot;</span>){
+                    <span style="color: #996633">$sql</span> <span style="color: #333333">=</span> <span style="color: #996633">$sql</span> <span style="color: #333333">.</span> <span style="background-color: #fff0f0">&quot; AND price = :price&quot;</span>;
+                }<span style="color: #008800; font-weight: bold">else</span>{
+                    <span style="color: #996633">$sql</span> <span style="color: #333333">=</span> <span style="color: #996633">$sql</span> <span style="color: #333333">.</span> <span style="background-color: #fff0f0">&quot;price = :price&quot;</span>;
+                }
+            }<span style="color: #008800; font-weight: bold">else</span>{
+                <span style="color: #996633">$priceError</span> <span style="color: #333333">=</span> <span style="background-color: #fff0f0">&quot;Price was not inputted.&quot;</span>;
+            }
+            
+            <span style="color: #008800; font-weight: bold">if</span>(<span style="color: #007020">isset</span>(<span style="color: #996633">$_POST</span>[<span style="background-color: #fff0f0">&#39;size&#39;</span>]) <span style="color: #333333">&amp;&amp;</span> <span style="color: #996633">$_POST</span>[<span style="background-color: #fff0f0">&#39;size&#39;</span>] <span style="color: #333333">!=</span> <span style="background-color: #fff0f0">&quot;&quot;</span>){
+                <span style="color: #996633">$size</span> <span style="color: #333333">=</span> <span style="color: #996633">$_POST</span>[<span style="background-color: #fff0f0">&#39;size&#39;</span>];
+                <span style="color: #008800; font-weight: bold">if</span>(<span style="color: #996633">$location</span> <span style="color: #333333">!=</span> <span style="background-color: #fff0f0">&quot;&quot;</span> <span style="color: #333333">||</span> <span style="color: #996633">$price</span> <span style="color: #333333">!=</span> <span style="background-color: #fff0f0">&quot;&quot;</span>){
+                    <span style="color: #996633">$sql</span> <span style="color: #333333">=</span> <span style="color: #996633">$sql</span> <span style="color: #333333">.</span> <span style="background-color: #fff0f0">&quot; AND size = :size&quot;</span>;
+                }<span style="color: #008800; font-weight: bold">else</span>{
+                    <span style="color: #996633">$sql</span> <span style="color: #333333">=</span> <span style="color: #996633">$sql</span> <span style="color: #333333">.</span> <span style="background-color: #fff0f0">&quot; size = :size&quot;</span>;
+                }
+            }<span style="color: #008800; font-weight: bold">else</span>{
+                <span style="color: #996633">$sizeError</span> <span style="color: #333333">=</span> <span style="background-color: #fff0f0">&quot;Size was not inputted.&quot;</span>;
+            }
+            
+            
+            <span style="color: #008800; font-weight: bold">if</span>(<span style="color: #996633">$locationError</span> <span style="color: #333333">!=</span> <span style="background-color: #fff0f0">&quot;&quot;</span> <span style="color: #333333">&amp;&amp;</span> <span style="color: #996633">$sizeError</span> <span style="color: #333333">!=</span> <span style="background-color: #fff0f0">&quot;&quot;</span> <span style="color: #333333">&amp;&amp;</span> <span style="color: #996633">$priceError</span> <span style="color: #333333">!=</span> <span style="background-color: #fff0f0">&quot;&quot;</span>){
+                <span style="color: #008800; font-weight: bold">throw</span> <span style="color: #008800; font-weight: bold">new</span> PDOException();
+            }<span style="color: #008800; font-weight: bold">else</span>{
+            
+                <span style="color: #996633">$statement</span> <span style="color: #333333">=</span> <span style="color: #996633">$connection</span><span style="color: #333333">-&gt;</span><span style="color: #0000CC">prepare</span>(<span style="color: #996633">$sql</span>);
+            
+            
+                <span style="color: #008800; font-weight: bold">if</span>(<span style="color: #996633">$location</span> <span style="color: #333333">!=</span> <span style="background-color: #fff0f0">&quot;&quot;</span>){
+                    <span style="color: #996633">$statement</span><span style="color: #333333">-&gt;</span><span style="color: #0000CC">bindParam</span>(<span style="background-color: #fff0f0">&quot;:location&quot;</span>, <span style="color: #996633">$location</span>, PDO<span style="color: #333333">::</span><span style="color: #0000CC">PARAM_STR</span>);
+                }   
+                <span style="color: #008800; font-weight: bold">if</span>(<span style="color: #996633">$price</span> <span style="color: #333333">!=</span> <span style="background-color: #fff0f0">&quot;&quot;</span>){
+                    <span style="color: #996633">$statement</span><span style="color: #333333">-&gt;</span><span style="color: #0000CC">bindParam</span>(<span style="background-color: #fff0f0">&quot;:price&quot;</span>, <span style="color: #996633">$price</span>, PDO<span style="color: #333333">::</span><span style="color: #0000CC">PARAM_STR</span>);
+                }
+                <span style="color: #008800; font-weight: bold">if</span>(<span style="color: #996633">$size</span> <span style="color: #333333">!=</span> <span style="background-color: #fff0f0">&quot;&quot;</span>){
+                    <span style="color: #996633">$statement</span><span style="color: #333333">-&gt;</span><span style="color: #0000CC">bindParam</span>(<span style="background-color: #fff0f0">&quot;:size&quot;</span>, <span style="color: #996633">$size</span>, PDO<span style="color: #333333">::</span><span style="color: #0000CC">PARAM_STR</span>);
+                }
+            
+                <span style="color: #996633">$statement</span><span style="color: #333333">-&gt;</span><span style="color: #0000CC">execute</span>();
+        
+                <span style="color: #996633">$result</span> <span style="color: #333333">=</span> <span style="color: #996633">$statement</span><span style="color: #333333">-&gt;</span><span style="color: #0000CC">fetchAll</span>();
+            }
+            
+        }<span style="color: #008800; font-weight: bold">catch</span>(PDOException <span style="color: #996633">$error</span>){
+            <span style="color: #008800; font-weight: bold">echo</span> <span style="color: #996633">$error</span><span style="color: #333333">-&gt;</span><span style="color: #0000CC">getMessage</span>();
+        }
+    }
+
+<span style="color: #557799">?&gt;</span>
+</pre></td></tr></table></div>
+                                <br>
+                              <p>Now we have to change the HTML part. Where we printed out our results, in the <b>if</b> part of <code>if(isset($_POST['submit']))</code> we check whether all the error variables are empty. If they are that means everything is ok and we can show the results. So our if block becomes: <code>if(isset($_POST['submit']) && $locationError == "" && $priceError == "" && $sizeError == "")</code>. In the <b>else</b> part of that if block, we print out a message: <code>echo "You have to input at least one parameter.";</code></p>
+                              <p>So now, our complete code looks like this: </p>
+                              
+                              <!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin: 0; line-height: 125%">  1
+  2
+  3
+  4
+  5
+  6
+  7
+  8
+  9
+ 10
+ 11
+ 12
+ 13
+ 14
+ 15
+ 16
+ 17
+ 18
+ 19
+ 20
+ 21
+ 22
+ 23
+ 24
+ 25
+ 26
+ 27
+ 28
+ 29
+ 30
+ 31
+ 32
+ 33
+ 34
+ 35
+ 36
+ 37
+ 38
+ 39
+ 40
+ 41
+ 42
+ 43
+ 44
+ 45
+ 46
+ 47
+ 48
+ 49
+ 50
+ 51
+ 52
+ 53
+ 54
+ 55
+ 56
+ 57
+ 58
+ 59
+ 60
+ 61
+ 62
+ 63
+ 64
+ 65
+ 66
+ 67
+ 68
+ 69
+ 70
+ 71
+ 72
+ 73
+ 74
+ 75
+ 76
+ 77
+ 78
+ 79
+ 80
+ 81
+ 82
+ 83
+ 84
+ 85
+ 86
+ 87
+ 88
+ 89
+ 90
+ 91
+ 92
+ 93
+ 94
+ 95
+ 96
+ 97
+ 98
+ 99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119</pre></td><td><pre style="margin: 0; line-height: 125%"><span style="color: #557799">&lt;?php</span>
+    <span style="color: #008800; font-weight: bold">if</span>(<span style="color: #007020">isset</span>(<span style="color: #996633">$_POST</span>[<span style="background-color: #fff0f0">&#39;submit&#39;</span>])){
+        <span style="color: #008800; font-weight: bold">try</span>{
+            <span style="color: #008800; font-weight: bold">require</span> <span style="background-color: #fff0f0">&quot;config.php&quot;</span>;
+            
+            <span style="color: #996633">$connection</span> <span style="color: #333333">=</span> <span style="color: #008800; font-weight: bold">new</span> PDO(<span style="color: #996633">$dsn</span>, <span style="color: #996633">$username</span>, <span style="color: #996633">$password</span>, <span style="color: #996633">$options</span>);
+            
+            <span style="color: #996633">$sql</span> <span style="color: #333333">=</span> <span style="background-color: #fff0f0">&quot;SELECT *</span>
+<span style="background-color: #fff0f0">                    FROM houses</span>
+<span style="background-color: #fff0f0">                    WHERE&quot;</span>;
+            
+            <span style="color: #996633">$location</span> <span style="color: #333333">=</span> <span style="background-color: #fff0f0">&quot;&quot;</span>;
+            <span style="color: #996633">$size</span> <span style="color: #333333">=</span> <span style="background-color: #fff0f0">&quot;&quot;</span>;
+            <span style="color: #996633">$price</span> <span style="color: #333333">=</span> <span style="background-color: #fff0f0">&quot;&quot;</span>;
+            <span style="color: #996633">$locationError</span> <span style="color: #333333">=</span> <span style="background-color: #fff0f0">&quot;&quot;</span>;
+            <span style="color: #996633">$sizeError</span> <span style="color: #333333">=</span> <span style="background-color: #fff0f0">&quot;&quot;</span>;
+            <span style="color: #996633">$priceError</span> <span style="color: #333333">=</span> <span style="background-color: #fff0f0">&quot;&quot;</span>;
+                        
+            <span style="color: #008800; font-weight: bold">if</span>(<span style="color: #007020">isset</span>(<span style="color: #996633">$_POST</span>[<span style="background-color: #fff0f0">&#39;location&#39;</span>]) <span style="color: #333333">&amp;&amp;</span> <span style="color: #996633">$_POST</span>[<span style="background-color: #fff0f0">&#39;location&#39;</span>] <span style="color: #333333">!=</span> <span style="background-color: #fff0f0">&quot;&quot;</span>){
+                <span style="color: #996633">$location</span> <span style="color: #333333">=</span> <span style="color: #996633">$_POST</span>[<span style="background-color: #fff0f0">&#39;location&#39;</span>];
+                <span style="color: #996633">$sql</span> <span style="color: #333333">=</span> <span style="color: #996633">$sql</span> <span style="color: #333333">.</span> <span style="background-color: #fff0f0">&quot; location = :location&quot;</span>;
+            }<span style="color: #008800; font-weight: bold">else</span>{
+                <span style="color: #996633">$locationError</span> <span style="color: #333333">=</span> <span style="background-color: #fff0f0">&quot;Location was not inputted.&quot;</span>;
+            }
+            
+            <span style="color: #008800; font-weight: bold">if</span>(<span style="color: #007020">isset</span>(<span style="color: #996633">$_POST</span>[<span style="background-color: #fff0f0">&#39;price&#39;</span>]) <span style="color: #333333">&amp;&amp;</span> <span style="color: #996633">$_POST</span>[<span style="background-color: #fff0f0">&#39;price&#39;</span>] <span style="color: #333333">!=</span> <span style="background-color: #fff0f0">&quot;&quot;</span>){
+                <span style="color: #996633">$price</span> <span style="color: #333333">=</span> <span style="color: #996633">$_POST</span>[<span style="background-color: #fff0f0">&#39;price&#39;</span>];
+                <span style="color: #008800; font-weight: bold">if</span>(<span style="color: #996633">$location</span> <span style="color: #333333">!=</span> <span style="background-color: #fff0f0">&quot;&quot;</span>){
+                    <span style="color: #996633">$sql</span> <span style="color: #333333">=</span> <span style="color: #996633">$sql</span> <span style="color: #333333">.</span> <span style="background-color: #fff0f0">&quot; AND price = :price&quot;</span>;
+                }<span style="color: #008800; font-weight: bold">else</span>{
+                    <span style="color: #996633">$sql</span> <span style="color: #333333">=</span> <span style="color: #996633">$sql</span> <span style="color: #333333">.</span> <span style="background-color: #fff0f0">&quot;price = :price&quot;</span>;
+                }
+            }<span style="color: #008800; font-weight: bold">else</span>{
+                <span style="color: #996633">$priceError</span> <span style="color: #333333">=</span> <span style="background-color: #fff0f0">&quot;Price was not inputted.&quot;</span>;
+            }
+            
+            <span style="color: #008800; font-weight: bold">if</span>(<span style="color: #007020">isset</span>(<span style="color: #996633">$_POST</span>[<span style="background-color: #fff0f0">&#39;size&#39;</span>]) <span style="color: #333333">&amp;&amp;</span> <span style="color: #996633">$_POST</span>[<span style="background-color: #fff0f0">&#39;size&#39;</span>] <span style="color: #333333">!=</span> <span style="background-color: #fff0f0">&quot;&quot;</span>){
+                <span style="color: #996633">$size</span> <span style="color: #333333">=</span> <span style="color: #996633">$_POST</span>[<span style="background-color: #fff0f0">&#39;size&#39;</span>];
+                <span style="color: #008800; font-weight: bold">if</span>(<span style="color: #996633">$location</span> <span style="color: #333333">!=</span> <span style="background-color: #fff0f0">&quot;&quot;</span> <span style="color: #333333">||</span> <span style="color: #996633">$price</span> <span style="color: #333333">!=</span> <span style="background-color: #fff0f0">&quot;&quot;</span>){
+                    <span style="color: #996633">$sql</span> <span style="color: #333333">=</span> <span style="color: #996633">$sql</span> <span style="color: #333333">.</span> <span style="background-color: #fff0f0">&quot; AND size = :size&quot;</span>;
+                }<span style="color: #008800; font-weight: bold">else</span>{
+                    <span style="color: #996633">$sql</span> <span style="color: #333333">=</span> <span style="color: #996633">$sql</span> <span style="color: #333333">.</span> <span style="background-color: #fff0f0">&quot; size = :size&quot;</span>;
+                }
+            }<span style="color: #008800; font-weight: bold">else</span>{
+                <span style="color: #996633">$sizeError</span> <span style="color: #333333">=</span> <span style="background-color: #fff0f0">&quot;Size was not inputted.&quot;</span>;
+            }
+            
+            
+            <span style="color: #008800; font-weight: bold">if</span>(<span style="color: #996633">$locationError</span> <span style="color: #333333">!=</span> <span style="background-color: #fff0f0">&quot;&quot;</span> <span style="color: #333333">&amp;&amp;</span> <span style="color: #996633">$sizeError</span> <span style="color: #333333">!=</span> <span style="background-color: #fff0f0">&quot;&quot;</span> <span style="color: #333333">&amp;&amp;</span> <span style="color: #996633">$priceError</span> <span style="color: #333333">!=</span> <span style="background-color: #fff0f0">&quot;&quot;</span>){
+                <span style="color: #008800; font-weight: bold">throw</span> <span style="color: #008800; font-weight: bold">new</span> PDOException();
+            }<span style="color: #008800; font-weight: bold">else</span>{
+            
+                <span style="color: #996633">$statement</span> <span style="color: #333333">=</span> <span style="color: #996633">$connection</span><span style="color: #333333">-&gt;</span><span style="color: #0000CC">prepare</span>(<span style="color: #996633">$sql</span>);
+            
+            
+                <span style="color: #008800; font-weight: bold">if</span>(<span style="color: #996633">$location</span> <span style="color: #333333">!=</span> <span style="background-color: #fff0f0">&quot;&quot;</span>){
+                    <span style="color: #996633">$statement</span><span style="color: #333333">-&gt;</span><span style="color: #0000CC">bindParam</span>(<span style="background-color: #fff0f0">&quot;:location&quot;</span>, <span style="color: #996633">$location</span>, PDO<span style="color: #333333">::</span><span style="color: #0000CC">PARAM_STR</span>);
+                }   
+                <span style="color: #008800; font-weight: bold">if</span>(<span style="color: #996633">$price</span> <span style="color: #333333">!=</span> <span style="background-color: #fff0f0">&quot;&quot;</span>){
+                    <span style="color: #996633">$statement</span><span style="color: #333333">-&gt;</span><span style="color: #0000CC">bindParam</span>(<span style="background-color: #fff0f0">&quot;:price&quot;</span>, <span style="color: #996633">$price</span>, PDO<span style="color: #333333">::</span><span style="color: #0000CC">PARAM_STR</span>);
+                }
+                <span style="color: #008800; font-weight: bold">if</span>(<span style="color: #996633">$size</span> <span style="color: #333333">!=</span> <span style="background-color: #fff0f0">&quot;&quot;</span>){
+                    <span style="color: #996633">$statement</span><span style="color: #333333">-&gt;</span><span style="color: #0000CC">bindParam</span>(<span style="background-color: #fff0f0">&quot;:size&quot;</span>, <span style="color: #996633">$size</span>, PDO<span style="color: #333333">::</span><span style="color: #0000CC">PARAM_STR</span>);
+                }
+            
+                <span style="color: #996633">$statement</span><span style="color: #333333">-&gt;</span><span style="color: #0000CC">execute</span>();
+        
+                <span style="color: #996633">$result</span> <span style="color: #333333">=</span> <span style="color: #996633">$statement</span><span style="color: #333333">-&gt;</span><span style="color: #0000CC">fetchAll</span>();
+            }
+            
+        }<span style="color: #008800; font-weight: bold">catch</span>(PDOException <span style="color: #996633">$error</span>){
+            <span style="color: #008800; font-weight: bold">echo</span> <span style="color: #996633">$error</span><span style="color: #333333">-&gt;</span><span style="color: #0000CC">getMessage</span>();
+        }
+    }
+
+<span style="color: #557799">?&gt;</span>
+
+<span style="color: #557799">&lt;!DOCTYPE html&gt;</span>
+<span style="color: #007700">&lt;html&gt;</span>
+<span style="color: #007700">&lt;head&gt;</span>
+<span style="color: #007700">&lt;title&gt;</span>Basic form<span style="color: #007700">&lt;/title&gt;</span>
+<span style="color: #007700">&lt;/head&gt;</span>
+<span style="color: #007700">&lt;body&gt;</span>
+
+<span style="color: #007700">&lt;h2&gt;</span>Simple PHP form<span style="color: #007700">&lt;/h2&gt;</span>    
+
+<span style="color: #007700">&lt;form</span> <span style="color: #0000CC">method=</span><span style="background-color: #fff0f0">&quot;post&quot;</span><span style="color: #007700">&gt;</span>
+    <span style="color: #007700">&lt;label</span> <span style="color: #0000CC">for=</span><span style="background-color: #fff0f0">&quot;location&quot;</span><span style="color: #007700">&gt;</span>Location:<span style="color: #007700">&lt;/label&gt;</span>
+    <span style="color: #007700">&lt;input</span> <span style="color: #0000CC">type=</span><span style="background-color: #fff0f0">&quot;text&quot;</span> <span style="color: #0000CC">name=</span><span style="background-color: #fff0f0">&quot;location&quot;</span> <span style="color: #0000CC">id=</span><span style="background-color: #fff0f0">&quot;location&quot;</span><span style="color: #007700">&gt;</span> <span style="color: #007700">&lt;br&gt;</span>
+
+    <span style="color: #007700">&lt;label</span> <span style="color: #0000CC">for=</span><span style="background-color: #fff0f0">&quot;price&quot;</span><span style="color: #007700">&gt;</span>Price:<span style="color: #007700">&lt;/label&gt;</span>
+    <span style="color: #007700">&lt;input</span> <span style="color: #0000CC">type=</span><span style="background-color: #fff0f0">&quot;text&quot;</span> <span style="color: #0000CC">name=</span><span style="background-color: #fff0f0">&quot;price&quot;</span> <span style="color: #0000CC">id=</span><span style="background-color: #fff0f0">&quot;price&quot;</span><span style="color: #007700">&gt;&lt;br&gt;</span>
+
+    <span style="color: #007700">&lt;label</span> <span style="color: #0000CC">for=</span><span style="background-color: #fff0f0">&quot;size&quot;</span><span style="color: #007700">&gt;</span>Size:<span style="color: #007700">&lt;/label&gt;</span>
+    <span style="color: #007700">&lt;input</span> <span style="color: #0000CC">type=</span><span style="background-color: #fff0f0">&quot;text&quot;</span> <span style="color: #0000CC">name=</span><span style="background-color: #fff0f0">&quot;size&quot;</span> <span style="color: #0000CC">id=</span><span style="background-color: #fff0f0">&quot;size&quot;</span><span style="color: #007700">&gt;&lt;br&gt;</span>
+
+    <span style="color: #007700">&lt;input</span> <span style="color: #0000CC">type=</span><span style="background-color: #fff0f0">&quot;submit&quot;</span> <span style="color: #0000CC">name=</span><span style="background-color: #fff0f0">&quot;submit&quot;</span> <span style="color: #0000CC">value=</span><span style="background-color: #fff0f0">&quot;Submit&quot;</span><span style="color: #007700">&gt;</span>
+
+<span style="color: #007700">&lt;/form&gt;</span>
+    
+    <span style="color: #557799">&lt;?php</span>
+        <span style="color: #008800; font-weight: bold">if</span>(<span style="color: #007020">isset</span>(<span style="color: #996633">$_POST</span>[<span style="background-color: #fff0f0">&#39;submit&#39;</span>]) <span style="color: #333333">&amp;&amp;</span> <span style="color: #996633">$locationError</span> <span style="color: #333333">==</span> <span style="background-color: #fff0f0">&quot;&quot;</span> <span style="color: #333333">&amp;&amp;</span> <span style="color: #996633">$priceError</span> <span style="color: #333333">==</span> <span style="background-color: #fff0f0">&quot;&quot;</span> <span style="color: #333333">&amp;&amp;</span> <span style="color: #996633">$sizeError</span> <span style="color: #333333">==</span> <span style="background-color: #fff0f0">&quot;&quot;</span>){
+            <span style="color: #008800; font-weight: bold">if</span>(<span style="color: #996633">$result</span> <span style="color: #333333">&amp;&amp;</span> <span style="color: #996633">$statement</span><span style="color: #333333">-&gt;</span><span style="color: #0000CC">rowCount</span>() <span style="color: #333333">&gt;</span> <span style="color: #0000DD; font-weight: bold">0</span>){<span style="color: #557799">?&gt;</span>
+                <span style="color: #007700">&lt;h2&gt;</span>Available houses:<span style="color: #007700">&lt;/h2&gt;</span>
+        <span style="color: #557799">&lt;?php</span> 
+            <span style="color: #008800; font-weight: bold">foreach</span>(<span style="color: #996633">$result</span> <span style="color: #008800; font-weight: bold">as</span> <span style="color: #996633">$row</span>){
+                <span style="color: #008800; font-weight: bold">echo</span> <span style="background-color: #fff0f0">&quot;Location: &quot;</span> <span style="color: #333333">.</span> <span style="color: #996633">$row</span>[<span style="background-color: #fff0f0">&#39;location&#39;</span>] <span style="color: #333333">.</span> <span style="background-color: #fff0f0">&quot;&lt;br&gt;&quot;</span>;
+                <span style="color: #008800; font-weight: bold">echo</span> <span style="background-color: #fff0f0">&quot;Price: &quot;</span> <span style="color: #333333">.</span> <span style="color: #996633">$row</span>[<span style="background-color: #fff0f0">&#39;price&#39;</span>] <span style="color: #333333">.</span> <span style="background-color: #fff0f0">&quot;&lt;br&gt;&quot;</span>;
+                <span style="color: #008800; font-weight: bold">echo</span> <span style="background-color: #fff0f0">&quot;Size: &quot;</span> <span style="color: #333333">.</span> <span style="color: #996633">$row</span>[<span style="background-color: #fff0f0">&#39;size&#39;</span>] <span style="color: #333333">.</span> <span style="background-color: #fff0f0">&quot;&lt;br&gt;&quot;</span>;
+            }
+        
+            }
+        }<span style="color: #008800; font-weight: bold">else</span>{
+                <span style="color: #008800; font-weight: bold">echo</span> <span style="background-color: #fff0f0">&quot;You have to input at least one parameter.&quot;</span>;
+            }
+    <span style="color: #557799">?&gt;</span>
+
+<span style="color: #007700">&lt;/body&gt;</span>
+<span style="color: #007700">&lt;/html&gt;</span>
+</pre></td></tr></table></div>        
+                             
+                                 <br>
+                                 
+                            <p>So now if we just press Submit without filling the form: </p>
+                                            <img style="max-width: 100%;height: auto;" src="../../images/form3.png">
+                                             
+                                             <br>
+                                             <p>That is it for this part, hope you enjoyed it.</p>
+                              <br><br>
+                              <b><p>Building a simple form with PHP and SQL: <a style="font-size: 25px;" href="../php/phpform.html">Part 1</a>, <a style="font-size: 25px;" href="../php/phpform2.html">Part 2</a></p></b>
+                              
+                              <br><br>
+                               
+                               
+                               
+                                <p style="font-size: 25px;">Thank you for reading, hope this article was useful. :)</p>
+                                <a href='https://ko-fi.com/V7V415UJ3' target='_blank'><img height='36' style='border:0px;height:36px;' src='https://az743702.vo.msecnd.net/cdn/kofi5.png?v=2' border='0' alt='Buy Me a Coffee at ko-fi.com' /></a>
+                                
+							</article>
+							
+							
+							
+							<h6 style="font-weight: 600;">You can also check out some of my other articles: </h6>
+                    <div class="row">
+                    <section class="col-md-4">
+							<div class="mini-posts" >
+                                    
+										<article class="mini-post">
+											<header>
+												<h3><a href="brackets.html">Brackets - a perfect IDE for beginners</a></h3>
+												<time class="published" datetime="2020-02-11">October, 2019</time>
+												<a href="#" class="author"><img src="../../images/avatar.jpg" alt="" /></a>
+											</header>
+																						<a href="../../brackets.html" class="image"><img src="../../images/brackets-cover.png" alt="" /></a>
+
+										</article>
+                                    
+								</div>
+                        </section>
+                        <section class="col-md-4">
+							<div class="mini-posts" >
+                                    
+										<article class="mini-post">
+											<header>
+												<h3><a href="flickity.html">Flickity - building an easy swiping carousel gallery</a></h3>
+												<time class="published" datetime="2020-02-11">February, 2019</time>
+												<a href="#" class="author"><img src="../../images/avatar.jpg" alt="" /></a>
+											</header>
+																						<a href="../css/flickity.html" class="image"><img src="../../images/flickity.png" alt="" /></a>
+
+										</article>
+                                    
+								</div>
+                        </section>
+					</div>
+
+					</div>
+
+				<!-- Footer -->
+					<section id="footer">
+						<ul class="icons">
+							<li><a href="https://facebook.com/lristic" target="_blank" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
+				            <li><a href="https://instagram.com/lristic13" target="_blank" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
+                            <li><a href="https://www.linkedin.com/in/lristic/" target="_blank" class="icon brands fa-linkedin"><span class="label">LinkedIn</span></a></li>
+						</ul>
+								<p class="copyright">&copy; Level up 2019</p>
+
+					</section>
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="../../assets/js/jquery.min.js"></script>
+			<script src="../../assets/js/browser.min.js"></script>
+			<script src="../../assets/js/breakpoints.min.js"></script>
+			<script src="../../assets/js/util.js"></script>
+			<script src="../../assets/js/main.js"></script>
+
+	</body>
+</html>

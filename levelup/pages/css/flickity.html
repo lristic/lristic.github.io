@@ -1,0 +1,280 @@
+<!DOCTYPE HTML>
+
+<html>
+	<head>
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-150204435-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-150204435-1');
+</script>
+
+		<title>Flickity - building an easy swiping carousel gallery</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+        
+		
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"/>
+        
+        <link rel="apple-touch-icon" sizes="180x180" href="../../images/favicon/apple-icon-180x180.png">
+        <link rel="icon" type="image/png" sizes="192x192"  href="../../images/favicon/android-icon-192x192.png">
+        
+        <link rel="icon" type="image/png" sizes="96x96" href="../../images/favicon/favicon-96x96.png">
+        
+        <link rel="manifest" href="../../images/favicon/manifest.json">
+        <meta name="msapplication-TileColor" content="#ffffff">
+        <meta name="msapplication-TileImage" content="../../images/favicon/ms-icon-144x144.png">
+        <meta name="theme-color" content="#ffffff">
+        
+        <link rel="stylesheet" href="../../assets/css/main.css" />
+        
+	</head>
+	<body class="single is-preload">
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Header -->
+					<header id="header">
+						<h1><a style="font-size: 15px;text-transform:lowercase" href="http://lazar-ristic.info" target="_blank">&lt;lristic&gt;</a></h1>
+						<nav class="links">
+							<ul>
+                                
+								<li><a href="../html/index.html">HTML<i class="fab fa-html5"></i></a></li>
+                                <li><a href="../css/index.html">CSS<i class="fab fa-css3-alt"></i></a></li>
+                                <li><a href="../js/index.html">JS<i class="fab fa-js-square"></i></a></li>
+                                <li><a href="../php/index.html">PHP<i class="fab fa-php"></i></a></li>
+				            </ul>
+						</nav>
+                       
+                        
+				
+
+					</header>
+
+				
+				<!-- Main -->
+					<div id="main">
+                        
+                        <nav class="links2">
+                       <h4 style="text-align: left;">Categories:</h4>
+							<ul>
+								<li><a href="../html/index.html">HTML<i class="fab fa-html5 ikonice"></i></a></li>
+                               
+                                <li><a href="../css/index.html">CSS<i class="fab fa-css3-alt ikonice"></i></a></li>
+                                
+                                <li><a href="../js/index.html">JS<i class="fab fa-js-square ikonice"></i></a></li>
+                                
+                                <li><a href="../php/index.html">PHP<i class="fab fa-php ikonice"></i></a></li>
+                                
+				            </ul>
+						</nav>
+
+						<!-- Post -->
+							<article class="post">
+								<header>
+									<div class="title">
+										<h2>Flickity - building an easy swiping carousel gallery</h2>
+									</div>
+									<div class="meta">
+										<time class="published" datetime="2019-10-16">October 16, 2019</time>
+										<a href="http://lazar-ristic.info" target="_blank" class="author"><span class="name">Lazar Ristić</span><img src="../../images/avatar.jpg" alt="" /></a>
+										<i style="font-size: 50px;color:orangered;padding-right: 20px;" class="fab fa-html5"></i>
+								        <i style="font-size: 50px;color:darkblue;margin-right:20px;" class="fab fa-css3-alt"></i>
+								        <i style="font-size: 50px;color:yellow" class="fab fa-js-square"></i>
+									</div>
+								</header>
+                                
+                                <br><br>
+								<!---<span class="image featured"><img src="images/pic01.jpg" alt="" /></span>-->
+								<p>Today, I will show you how to use Flickity, a library for easy building responsive, swipeable carousels.</p>
+								<p>In our <i>index.html</i>, we will add the resources we need for Flickity, which you can find on it's <a href="https://flickity.metafizzy.co/" target="_blank"> official website.</a> You can find the CDN for CSS and JS files on the first page of the website. Also, we will need jQuery and you can find the CDN for it on this <a href="https://code.jquery.com/">website.</a> Just select <i>minified</i> version from jQuery 3.x.</p>
+								<p>After linking the files, your code should look something like this:</p>
+								
+								<!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin: 0; line-height: 125%"> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21</pre></td><td><pre style="margin: 0; line-height: 125%"><span style="color: #557799">&lt;!DOCTYPE html&gt;</span>
+<span style="color: #007700">&lt;html</span> <span style="color: #0000CC">lang=</span><span style="background-color: #fff0f0">&quot;en&quot;</span><span style="color: #007700">&gt;</span>
+<span style="color: #007700">&lt;head&gt;</span>
+    <span style="color: #007700">&lt;meta</span> <span style="color: #0000CC">charset=</span><span style="background-color: #fff0f0">&quot;UTF-8&quot;</span><span style="color: #007700">&gt;</span>
+    <span style="color: #007700">&lt;title&gt;</span>Flickity<span style="color: #007700">&lt;/title&gt;</span>
+    
+    <span style="color: #888888">&lt;!--- jQuery ---&gt;</span>
+    <span style="color: #007700">&lt;script </span><span style="color: #0000CC">src=</span><span style="background-color: #fff0f0">&quot;https://code.jquery.com/jquery-3.4.1.min.js&quot;</span> <span style="color: #0000CC">integrity=</span><span style="background-color: #fff0f0">&quot;sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=&quot;</span> <span style="color: #0000CC">crossorigin=</span><span style="background-color: #fff0f0">&quot;anonymous&quot;</span><span style="color: #007700">&gt;&lt;/script&gt;</span>
+    
+    <span style="color: #888888">&lt;!--- Flickity files ---&gt;</span>
+        <span style="color: #007700">&lt;link</span> <span style="color: #0000CC">rel=</span>
+        <span style="background-color: #fff0f0">&quot;stylesheet&quot;</span> 
+        <span style="color: #0000CC">href=</span><span style="background-color: #fff0f0">&quot;https://unpkg.com/flickity@2/dist/flickity.min.css&quot;</span><span style="color: #007700">&gt;</span>
+        <span style="color: #007700">&lt;script </span><span style="color: #0000CC">src=</span><span style="background-color: #fff0f0">&quot;https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js&quot;</span><span style="color: #007700">&gt;&lt;/script&gt;</span>
+        
+    
+      
+<span style="color: #007700">&lt;/head&gt;</span>
+<span style="color: #007700">&lt;body&gt;</span>
+   
+     
+    
+<span style="color: #007700">&lt;/body&gt;</span>
+<span style="color: #007700">&lt;/html&gt;</span>
+</pre></td></tr></table>
+                               </div>
+                               
+                                <p>One important thing is, jQuery needs to be linked first, before Flickity. <br>Now let's get to coding. First, we initialize Flickity with jQuery right after closing body tag:</p>
+								<!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin: 0; line-height: 125%">1
+2
+3
+4
+5
+6
+7
+8
+9</pre></td><td><pre style="margin: 0; line-height: 125%"><span style="color: #007700">&lt;script&gt;</span>
+    $(<span style="background-color: #fff0f0">&#39;.main-carousel&#39;</span>).flickity({
+        <span style="color: #888888">// options</span>
+        cellAlign<span style="color: #333333">:</span> <span style="background-color: #fff0f0">&#39;center&#39;</span>,
+        contain<span style="color: #333333">:</span> <span style="color: #008800; font-weight: bold">true</span>,
+        
+    });
+    
+<span style="color: #007700">&lt;/script&gt;</span>
+</pre></td></tr></table>
+                               </div>
+
+                               <p>Now, let's add some HTML that will be affected by this jQuery. Inside the body, we add: </p>
+                               <!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin: 0; line-height: 125%">1
+2
+3
+4
+5
+6
+7
+8
+9</pre></td><td><pre style="margin: 0; line-height: 125%"><span style="color: #007700">&lt;div</span> <span style="color: #0000CC">class=</span><span style="background-color: #fff0f0">&quot;main-carousel&quot;</span><span style="color: #007700">&gt;</span>
+      
+      <span style="color: #007700">&lt;div</span> <span style="color: #0000CC">class=</span><span style="background-color: #fff0f0">&quot;carousel-cell&quot;</span> <span style="color: #0000CC">style=</span><span style="background-color: #fff0f0">&quot;background-color: darkred;width:100%;text-align:center;height:300px;&quot;</span><span style="color: #007700">&gt;&lt;h1&gt;</span>1<span style="color: #007700">&lt;/h1&gt;&lt;/div&gt;</span>
+      <span style="color: #007700">&lt;div</span> <span style="color: #0000CC">class=</span><span style="background-color: #fff0f0">&quot;carousel-cell&quot;</span> <span style="color: #0000CC">style=</span><span style="background-color: #fff0f0">&quot;background-color: yellow;width:100%;text-align:center;height:300px;&quot;</span><span style="color: #007700">&gt;&lt;h1&gt;</span>2<span style="color: #007700">&lt;/h1&gt;&lt;/div&gt;</span>
+      <span style="color: #007700">&lt;div</span> <span style="color: #0000CC">class=</span><span style="background-color: #fff0f0">&quot;carousel-cell&quot;</span> <span style="color: #0000CC">style=</span><span style="background-color: #fff0f0">&quot;background-color: darkgreen;width:100%;text-align:center;height:300px;&quot;</span><span style="color: #007700">&gt;&lt;h1&gt;</span>3<span style="color: #007700">&lt;/h1&gt;&lt;/div&gt;</span>
+      <span style="color: #007700">&lt;div</span> <span style="color: #0000CC">class=</span><span style="background-color: #fff0f0">&quot;carousel-cell&quot;</span> <span style="color: #0000CC">style=</span><span style="background-color: #fff0f0">&quot;background-color: darkblue;width:100%;text-align:center;height:300px;&quot;</span><span style="color: #007700">&gt;&lt;h1&gt;</span>4<span style="color: #007700">&lt;/h1&gt;&lt;/div&gt;</span>
+      <span style="color: #007700">&lt;div</span> <span style="color: #0000CC">class=</span><span style="background-color: #fff0f0">&quot;carousel-cell&quot;</span> <span style="color: #0000CC">style=</span><span style="background-color: #fff0f0">&quot;background-color:darkorange;width:100%;text-align:center;height:300px;&quot;</span><span style="color: #007700">&gt;&lt;h1&gt;</span>5<span style="color: #007700">&lt;/h1&gt;&lt;/div&gt;</span>
+  
+    <span style="color: #007700">&lt;/div&gt;</span>
+</pre></td></tr></table>
+                               </div>
+
+                               <p>I added different styles to my carousel cells so I could make them more visible when testing. You can style them in any way. You can put whatever you want inside these divs, depending on your needs.</p>
+                               <p>That is all! You can play around with many options Flickity provides and all of them can be found on their website. I'll show you some of them now. <br> 
+                               1. If you want an infinite scroll, meaning that when (in this case) you reach the fifth div, you can continue swiping without going back. This option is called <b>wrapAround</b> and you put it to true in jQuery.<br>
+                               2. Another great option is auto play, called, <b>autoPlay</b> :). You put it's value to number of miliseconds after which you want to switch the carousel-cell.<br>
+                               3. Going hand to hand with the previous one, by default an autoplay stops if you hover over it, so I personally like to turn this off, so it always auto plays. This option is called <b>pauseAutoPlayOnHover</b> and you put it's value to false.</p>
+                               <p>Now, our jQuery code should look something like this: </p>
+                               <!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin: 0; line-height: 125%"> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11</pre></td><td><pre style="margin: 0; line-height: 125%"><span style="color: #007700">&lt;script&gt;</span>
+    $(<span style="background-color: #fff0f0">&#39;.main-carousel&#39;</span>).flickity({
+        <span style="color: #888888">// options</span>
+        cellAlign<span style="color: #333333">:</span> <span style="background-color: #fff0f0">&#39;center&#39;</span>,
+        contain<span style="color: #333333">:</span> <span style="color: #008800; font-weight: bold">true</span>,
+        autoPlay<span style="color: #333333">:</span> <span style="color: #0000DD; font-weight: bold">1500</span>,
+        pauseAutoPlayOnHover<span style="color: #333333">:</span> <span style="color: #008800; font-weight: bold">false</span>,
+        wrapAround<span style="color: #333333">:</span><span style="color: #008800; font-weight: bold">true</span>
+    });
+    
+<span style="color: #007700">&lt;/script&gt;</span>
+</pre></td></tr></table>
+                                </div>
+                                <br>
+                                <p>On your screen, you should see something like this: </p>
+                                <img style="max-width: 100%;height: auto;" src="../../images/flickity.gif">
+
+                                <br><br>
+                                <p>Thank you for reading, hope this article was useful for you :)</p>
+                                <a href='https://ko-fi.com/V7V415UJ3' target='_blank'><img height='36' style='border:0px;height:36px;' src='https://az743702.vo.msecnd.net/cdn/kofi5.png?v=2' border='0' alt='Buy Me a Coffee at ko-fi.com' /></a>
+                                
+							</article>
+                    <h6 style="font-weight: 600;">You can also check out some of my other articles: </h6>
+                    <div class="row">
+                    <section class="col-md-4">
+							<div class="mini-posts">
+                                    
+										<article class="mini-post">
+											<header>
+												<h3><a href="../php/phpform.html">Building a simple form using PHP and MySQL (Part 1)</a></h3>
+												<time class="published" datetime="2020-02-11">February, 2020</time>
+												<a href="#" class="author"><img src="../../images/avatar.jpg" alt="" /></a>
+											</header>
+																						<a href="../php/phpform.html" class="image"><img src="../../images/phpmysql.png" alt="" /></a>
+
+										</article>
+                                    
+								</div>
+                        </section>
+                        <section class="col-md-4">
+							<div class="mini-posts" >
+                                    
+										<article class="mini-post">
+											<header>
+												<h3><a href="../html/brackets.html">Brackets - a perfect IDE for beginners</a></h3>
+												<time class="published" datetime="2020-02-11">October, 2019</time>
+												<a href="#" class="author"><img src="../../images/avatar.jpg" alt="" /></a>
+											</header>
+																						<a href="../html/brackets.html" class="image"><img src="../../images/brackets-cover.png" alt="" /></a>
+
+										</article>
+                                    
+								</div>
+                        </section>
+					</div>
+					</div>
+					
+
+				<!-- Footer -->
+					<section id="footer">
+								<ul class="icons" style="font-size: 35px;">
+									<li><a style="color: #4267B2;" href="https://www.facebook.com/lristic" target="_blank" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
+									<li><a style="color:#E1306C" href="instagram.com/lristic13" target="_blank" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
+                                    <li><a style="color: #0072b1" href="https://www.linkedin.com/in/lristic/" class="icon brands fa-linkedin" target="_blank"><span class="label">LinkedIn</span></a></li>
+								</ul>
+								<p class="copyright" style="font-size: 15px;">&copy; Level up 2020.</p>
+							</section>
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="../../assets/js/jquery.min.js"></script>
+			<script src="../../assets/js/browser.min.js"></script>
+			<script src="../../assets/js/breakpoints.min.js"></script>
+			<script src="../../assets/js/util.js"></script>
+			<script src="../../assets/js/main.js"></script>
+
+	</body>
+</html>

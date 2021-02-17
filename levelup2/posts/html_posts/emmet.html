@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-150204435-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-150204435-1');
+</script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:500,800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="../../assets/css/hover-min.css">
+    <link rel="stylesheet" href="../../assets/css/style.css">
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+
+    <title>Emmet - HTML na brži način</title>
+</head>
+<body>
+
+  <nav class="navbar sticky-top navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="../../index.html" style="color: #fff;"><i>&lt;KDRZM&gt;</i></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+      <div class="navbar-nav ml-auto">
+        <a class="nav-item nav-link html-nav" href="../../pages/html_pages/index.html">HTML</a>
+        <a class="nav-item nav-link css-nav" href="../../pages/css_pages/index.html">CSS</a>
+        <a class="nav-item nav-link js-nav" href="../../pages/js_pages/index.html">JAVASCRIPT</a>
+        <a class="nav-item nav-link php-nav" href="../../pages/php_pages/index.html">PHP</a>
+      </div>
+    </div>
+  </nav>
+
+<div class="container">
+<br>
+  <center><h1 style="font-weight: 600;">Emmet - HTML na brži način</h1></center>
+  <hr style="background-color: #00041b;width: 70%;">
+
+  <p>Danas ćemo učiti o korisnom alatu, zvanom Emmet, koji je implementiran u sve moderne editore.</p>
+  <p>Koristi se da ubrza kodiranje u HTML-u i da skrati kucanje kostura HTML fajla. Proći ću kroz neke proste primere, da bi bilo jasno o čemu se radi.</p>
+  <p>Za ovaj tutorijal, biće vam potrebna samo jedna stranica:<i> index.html</i>.</p>
+								
+                               
+                                
+
+  <p>U zavisnosti od toga koji editor koristite, sam poziv Emmet-a se može razlikovati, ili je na Tab dugme, ili na Enter. S obzirom da ja koristim Brackets, koristim Tab. Počećemo sa kucanjem samo <b>!</b> i pritiskanjem Tab-a. Ovo će nam generisati sve tagove koje inače kucamo kada tek otvorimo prazan .html fajl: </p>
+                               <!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #557799">&lt;!DOCTYPE html&gt;</span>
+<span style="color: #007700">&lt;html</span> <span style="color: #0000CC">lang=</span><span style="background-color: #fff0f0">&quot;en&quot;</span><span style="color: #007700">&gt;</span>
+<span style="color: #007700">&lt;head&gt;</span>
+    <span style="color: #007700">&lt;meta</span> <span style="color: #0000CC">charset=</span><span style="background-color: #fff0f0">&quot;UTF-8&quot;</span><span style="color: #007700">&gt;</span>
+    <span style="color: #007700">&lt;title&gt;</span>Document<span style="color: #007700">&lt;/title&gt;</span>
+<span style="color: #007700">&lt;/head&gt;</span>
+<span style="color: #007700">&lt;body&gt;</span>
+    
+<span style="color: #007700">&lt;/body&gt;</span>
+<span style="color: #007700">&lt;/html&gt;</span>
+</pre></div>
+
+                               
+                               
+                               
+                               <p>Sada kada imamo osnovu, možemo nastaviti sa dodavanjem tagova unutar body taga. 
+                               Na primer, treba nam <b>div</b> sa klasom <b>header</b>, <b>div</b> sa id-jem <b>main</b> i <b>div</b> sa klasom <b>footer-index</b>. 
+                               Znamo da klasu referišemo tačkom, <i>npr. <code>.header</code></i>, a id referišemo tarabom, <i>npr. <code>#main</code></i>. 
+                               Na osnovu toga, kucanjem <code>div.header</code> i pritiskanjem Tab-a (ili Enter-a), <code>div#main</code> + Tab i <code>div.footer-index</code> + Tab generišemo:  </p>
+                               <!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #007700">&lt;div</span> <span style="color: #0000CC">class=</span><span style="background-color: #fff0f0">&quot;header&quot;</span><span style="color: #007700">&gt;&lt;/div&gt;</span>
+<span style="color: #007700">&lt;div</span> <span style="color: #0000CC">id=</span><span style="background-color: #fff0f0">&quot;main&quot;</span><span style="color: #007700">&gt;&lt;/div&gt;</span>
+<span style="color: #007700">&lt;div</span> <span style="color: #0000CC">class=</span><span style="background-color: #fff0f0">&quot;footer-index&quot;</span><span style="color: #007700">&gt;&lt;/div&gt;</span>
+</pre></div>
+
+                               
+                                <br>
+                                <p>Hajde da zađemo još dublje. Neka nam je potreban div sa id-jem list i unutar tog div-a imamo listu sa 3 stavke unutar nje.
+                                Pomoću Emmet-a, to radimo ovako: <code>div#list>ul>li*3</code> + Tab (ili Enter), što generiše: </p>
+                                
+                                <!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #007700">&lt;div</span> <span style="color: #0000CC">class=</span><span style="background-color: #fff0f0">&quot;list&quot;</span><span style="color: #007700">&gt;</span>
+        <span style="color: #007700">&lt;ul&gt;</span>
+            <span style="color: #007700">&lt;li&gt;&lt;/li&gt;</span>
+            <span style="color: #007700">&lt;li&gt;&lt;/li&gt;</span>
+            <span style="color: #007700">&lt;li&gt;&lt;/li&gt;</span>
+        <span style="color: #007700">&lt;/ul&gt;</span>
+    <span style="color: #007700">&lt;/div&gt;</span>
+</pre></div>
+
+
+                                <br>
+        <p>Možemo čak i ubacivati tekst direktno u elemente. 
+        Na primer, potreban nam je <b>h1</b> sa klasom <b>main-title</b> koji kaže "Dobrodošli!". 
+        Pomoću Emmet-a, ovo generišemo kodom: <code>h1.main-title{Dobrodošli!}</code> :</p>
+                                
+                                
+                                <!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%">    <span style="color: #007700">&lt;h1</span> <span style="color: #0000CC">class=</span><span style="background-color: #fff0f0">&quot;main-title&quot;</span><span style="color: #007700">&gt;</span>Dobrodošli!<span style="color: #007700">&lt;/h1&gt;</span>
+</pre></div>
+
+                                <br>
+        <p>Ovo su neke osnovne ideje, koje ubrzavaju kodiranje. 
+        Vremenom možete razviti kompleksnije izraze koji još više skraćuju kod, zavisno od vaših potreba.</p>
+                                
+                                
+
+                                <br><br>
+        <p>Hvala što ste čitali, nadam se da je bilo korisno :)</p>
+
+        <div class="meta">
+			<time class="published" datetime="2019-10-16">30. mart, 2020.</time>
+			<a href="http://lazar-ristic.info" target="_blank" class="author"><span class="name">Lazar Ristić</span></a>
+			<i style="font-size: 50px;color:orangered;padding-right: 20px;" class="fab fa-html5"></i>
+		</div>
+
+        <br><br>
+        
+
+</div>
+
+  
+</body>
+</html>
