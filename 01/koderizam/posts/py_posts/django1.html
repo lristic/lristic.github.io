@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-150204435-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-150204435-1');
+</script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:500,800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="../../assets/css/hover-min.css">
+    <link rel="stylesheet" href="../../assets/css/style.css">
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+
+    <title>Uvod u Django | Koderizam</title>
+</head>
+<body>
+
+  <nav class="navbar sticky-top navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="../../index.html" style="color: #fff;"><i>&lt;KDRZM&gt;</i></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+      <div class="navbar-nav ml-auto">
+        <a class="nav-item nav-link html-nav" href="../../pages/html_pages/index.html">HTML</a>
+        <a class="nav-item nav-link css-nav" href="../../pages/css_pages/index.html">CSS</a>
+        <a class="nav-item nav-link js-nav" href="../../pages/js_pages/index.html">JAVASCRIPT</a>
+        <a class="nav-item nav-link php-nav" href="../../pages/php_pages/index.html">PHP</a>
+        <a class="nav-item nav-link py-nav" href="../../pages/py_pages/index.html">PYTHON</a>
+        <a class="nav-item nav-link git-nav" href="../../pages/git_pages/index.html">GIT</a>
+      </div>
+    </div>
+  </nav>
+
+<div class="container">
+<br>
+<center>
+    <h1 style="font-weight: 600;">Uvod u Django</h1>
+    <h4>1.deo</h4>
+
+</center>
+  <hr style="background-color: #00041b;width: 70%;">
+  <p>U današnjem tutorijalu, pokazaću vam neke osnovne stvari koje se tiču Djanga, Pythonovog frameworka koji će Vam mnogo olakšati posao prilikom izrade web aplikacija.</p>
+  <p>Pravićemo aplikaciju za evidenciju treninga, koju sam ja već uradio u PHPu, ali sam hteo da je prebacim u Django pa eto prilike i za tutorijal istovremeno.</p>
+  <p>Aplikacija će se sastojati iz više delova:</p>
+  <ul>
+    <li>- Login/Register forme</li>
+    <li>- Pregleda odrađenih treninga</li>
+    <li>- Unosa novih treninga</li>
+  </ul>
+                                
+                                
+  <p>Za ovaj tutorijal je potrebno osnovno znanje HTMLa i CSSa, a što se tiče Pythona, u principu nije potrebno ništa jer ću pokušati da objasnim sve što koristimo, ali bi svakako značilo znati makar osnovnu sintaksu.</p>
+  <p>Sve što budemo radili ćemo takođe kačiti na GitHub pomoću git-a, tako da ću se osim Djanga pozabaviti malo i gitom.</p>
+  <p>Kako će otprilike izgledati ono što ćemo uraditi? Ovo je verzija urađena u PHPu:</p>
+  
+  <center>
+  <img style="max-width: 75%; height: auto;" src="repz1.jpg">
+  <img style="max-width: 75%; height: auto;" src="repz2.jpg">
+  <img style="max-width: 75%; height: auto;" src="repz3.jpg">
+  <img style="max-width: 75%; height: auto;" src="repz4.jpg">
+  </center>
+    <br>
+    <p>Sad kad konačno znamo šta ćemo praviti, hajde da počnemo.</p>
+    <br><br>
+
+    <h3>1. Instalacija Djanga i inicijalizacija projekta</h3>
+    <p>Pre početka bilo čega, potrebno je da imate instaliran Python. Ukoliko nemate, možete ga skinuti <a target="_blank" href="https://www.python.org/downloads/">ovde</a>.
+        Ja koristim verziju 3.7.7, pa ukoliko želite da imate identično kao što će biti rađeno u ovom tutorijalu, instalirajte tu verziju.
+    </p>
+    <p>Nakon instalacije Pythona, instaliramo Django: <code>pip install django</code> .</p>
+    <p>Kada to završimo, možemo početi sa inicijalizacijom projekta. Komandu koju koristimo je: <code>django-admin startproject ime_projekta</code> .
+        Ono što ova komanda radi jeste da pravi folder sa imenom ime_projekta i unutra smešta početne fajlove za projekat. Dakle, nije potrebno praviti folder za projekat pa u njemu pokretati ovu komandu, već će Django to uraditi za vas.
+        Projekat nazovite kako god želite, ja ću na osnovu slika gore - repz.
+    </p>
+
+    <h3>2. Pravljenje repozitorijuma na GitHubu</h3>
+    <p>Kada smo napravili folder sa fajlovima koje ćemo koristiti, sada ćemo to povezati sa GitHubom. </p>
+    <p>U folderu našeg projekta, u terminalu kucamo: <code>git init</code>. Ono što će ova komanda uraditi jeste da će nam omogućiti da pratimo naš projekat pomoću gita, evidentiraće sve promene koje ćemo commitovati kada dođe vreme.
+    Da ne bih pisao komandu po komandu šta koja radi, drugarica sa <a target="_blank" href="https://programmer-buddy.com">Programmer Buddyja</a> je već pokrila osnovne git komande: <a target="_blank" href="https://programmer-buddy.com/po%C4%8Detna-1/f/9-git-komandi-koje-mora%C5%A1-da-zna%C5%A1">Osnovne git komande </a>.
+    </p>
+    <p>Kada smo inicijalizovali projekat na gitu, dodajemo sve fajlove: <code>git add .</code>  -- Da, tačka je deo koda i označava da sve fajlove želimo da dodajemo :) </p>
+    <p>Tako dodate fajlove želimo da commitujemo, tj. zapamtimo: <code> git commit -m "Initial commit" </code>. Dodatak -m "Neka poruka" je opcion, ali je neka dobra praksa napisati šta su promene, pogotovo kada se radi u timu, da bi ostali znali šta je promenjeno u kodu.
+    Primer - u našem slučaju, završili smo Login za korisnika, commit bi izgledao: <code> git commit -m "Completed login" </code>. Sažeta poruka koja govori šta je urađeno.
+    Sada idemo na GitHub, ukoliko nemate nalog, registrujte se i kada to završite u gornjem desnom uglu ćete videti:</p>
+    <img style="max-width: 75%; height: auto;" src="github1.jpg">
+    <p>Biramo New repository i u novom prozoru dajemo ime repozitorijumu i pravimo ga. Nakon toga, iskoćiće nam ekran: </p>
+    <img style="max-width: 75%; height: auto;" src="github2.jpg">
+    <p>Zanima nas donji skup komandi, koje ćemo kucati nazad u terminalu. Dakle bukvalno je potrebno da prepišete ono što vam piše u donjem delu.</p>
+    <p>Nakon toga smo konačno spremni da pravimo aplikaciju.</p>
+
+<br>
+    <h3>3. Pokretanje servera</h3>
+    <p>Prvo ćemo pokrenuti lokalni server pomoću Djanga, pa ćemo pričati o fajlovima koji se već nalaze u folderu.</p>
+    <code>python manage.py runserver</code>
+    <p>Ova komanda će pokrenuti lokalni server i u terminalu bi trebalo da dobijete poruku nešto nalik ovoj: </p>
+    <img style="max-width: 75%; height: auto;" src="runserver.jpg">
+    <p>Kao što možemo videti, pokrenut je server na adresi 127.0.0.1:8000, pa kada u pretraživaču odemo na tu adresu, trebalo bi da nam izađe ovo: </p>
+    <img style="max-width: 75%; height: auto; border: 1px solid black;" src="djangoInstalacija.png">
+    
+    <br><br>
+    <p>Ukoliko vidite ovo znači da je sve prošlo kako treba :) </p>
+
+    <p>Ovde ću stati, počeci i instalacije uvek mogu biti problematične, tako da ukoliko nešto ne radi slobodno mi pišite na 
+    <a href="https://instagram.com/koderizam" target="_blank"> Instagramu </a> ili <a target="_blank" href="https://www.facebook.com/koderizam/">Facebooku</a>.
+    Ubrzo ide i drugi deo :)</p>
+                         
+                                
+                                <br><br>
+                                
+                                
+                                <p style="font-size: 25px;">Hvala što ste čitali, nadam se da je bilo korisno. :)</p>
+<div class="meta">
+			<time class="published" datetime="2019-10-16">27. septembar 2020.</time>
+			<a href="http://lazar-ristic.info" target="_blank" class="author"><span class="name">Lazar Ristić</span></a>
+			<i style="font-size: 50px;color:orangered;padding-right: 20px;" class="fab fa-html5"></i>
+		</div>
+        <br><br>
+</div>
+  
+</body>
+</html>

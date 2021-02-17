@@ -1,0 +1,179 @@
+body{
+    background-color: #fcfcfd;
+    color: #291F1E;
+    font-family: 'Quicksand', sans-serif;
+}
+
+header{
+    background-color: #02020a;
+    height: 70px;
+}
+
+header h1{
+    font-weight: 600!important;
+}
+
+.task-label {
+    font-size: 40px;
+    font-weight: 700!important;
+}
+
+.main-heading{
+    color: #fcfcfd;
+    padding-top: .5rem;
+}
+
+#to-do-input {
+    width: 300px;
+    height: 40px;
+    border: none;
+    border-bottom: 3px solid #02020a;
+    padding-top: 10px;
+    font-size: 30px;
+    outline: none;
+    background-color: #fcfcfd;
+}
+
+#to-do-output{
+    display: inline-block;
+    font-size: 20px;
+}
+
+#to-do-button{
+    padding-left: 15px;
+    font-size: 30px;
+    cursor: pointer;
+}
+
+#to-do-button:hover{
+    color: #B497D6;
+    transition: 0.3s ease;
+}
+
+input::-webkit-input-placeholder{
+    font-size: 20px;
+}
+
+.output{
+    background: linear-gradient(to left, #c4c4c4 50%, #21c800 50%);
+    background-size: 200% 100%;
+    background-position:right bottom;
+    margin-left:10px;
+    transition:all 1s ease;
+    text-align: left;
+    padding-top: 15px;
+    border-radius: 7px;
+    width: 70%;
+    margin-bottom: 5px;
+    
+}
+
+.output p{
+    font-size: 36px!important;
+}
+
+.fa-trash{
+    cursor: pointer;
+    padding-left: 20px;
+    font-size: 30px;
+}
+
+.fa-trash:hover{    
+    color: #F64740;
+    transition: 0.3s ease;
+}
+
+.fa-check{
+    cursor:pointer;
+    padding-left:20px;
+    font-size:30px;
+}
+
+.fa-check-double{
+    color: #fcfcfd!important;
+    cursor:pointer;
+    padding-left:20px;
+    font-size:30px;
+}
+
+.fa-question{
+    cursor:pointer;
+    padding-left:20px;
+    font-size:20px;
+}
+
+.fa-check:hover{
+    color: #21C800;
+    transition: 0.3s ease;
+}
+
+.lineThrough{
+    text-decoration: line-through;
+    color: #fcfcfd;
+}
+
+.completed-output{
+    background-position:left bottom;
+    
+}
+
+.completed-trash{
+    color: #fcfcfd;
+}
+
+#bottom-container{
+    position:fixed;
+    bottom:0;    
+    font-size: 30px;
+    background-color: #02020a;
+    color: #fcfcfd;
+    left: 50%;
+    transform: translate(-50%, 0);
+    width: 50%;
+    font-size: 50px;
+    
+}
+
+
+/* MEDIA QUERIES */ 
+@media(max-width: 767px){
+    .task-label{
+        font-size: 30px;
+        margin-top: 20px;
+    }
+    
+    #to-do-input{
+        width:200px;
+        margin-bottom: 50px;
+    }
+    
+    .output{
+        width: 100%;
+        margin:0;
+        margin-bottom: 10px;
+    }
+    
+    .output p{
+        font-size: 22px!important;
+    }
+    
+    .fa-check{
+        font-size: 22px;
+    }
+    
+    .fa-trash{
+        font-size: 22px;
+    }
+    
+    .fa-check-double{
+        font-size: 22px;
+    }
+    
+    #bottom-container{
+        width: 70%;
+        font-size: 30px;
+        border-top-left-radius: 5px;
+        border-top-right-radius: 5px;
+        
+    }
+}

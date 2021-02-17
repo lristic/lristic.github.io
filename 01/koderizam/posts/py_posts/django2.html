@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-150204435-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-150204435-1');
+</script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:500,800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="../../assets/css/hover-min.css">
+    <link rel="stylesheet" href="../../assets/css/style.css">
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+
+    <title>Uvod u Django | Koderizam</title>
+</head>
+<body>
+
+  <nav class="navbar sticky-top navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="../../index.html" style="color: #fff;"><i>&lt;KDRZM&gt;</i></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+      <div class="navbar-nav ml-auto">
+        <a class="nav-item nav-link html-nav" href="../../pages/html_pages/index.html">HTML</a>
+        <a class="nav-item nav-link css-nav" href="../../pages/css_pages/index.html">CSS</a>
+        <a class="nav-item nav-link js-nav" href="../../pages/js_pages/index.html">JAVASCRIPT</a>
+        <a class="nav-item nav-link php-nav" href="../../pages/php_pages/index.html">PHP</a>
+        <a class="nav-item nav-link py-nav" href="../../pages/py_pages/index.html">PYTHON</a>
+        <a class="nav-item nav-link git-nav" href="../../pages/git_pages/index.html">GIT</a>
+      </div>
+    </div>
+  </nav>
+
+<div class="container">
+<br>
+<center>
+    <h1 style="font-weight: 600;">Uvod u Django</h1>
+    <h4>2.deo</h4>
+
+</center>
+  <hr style="background-color: #00041b;width: 70%;">
+  <p>U današnjem tutorijalu, nastavićemo rad sa Djangom. Sredićemo prvu stranicu, 
+  pričati o fajlovima koji se već nalaze u folderu i videti šta radimo kada dodamo još foldera.</p>
+  <h3>1. Šta je manage.py?</h3>
+  <p>Kada smo ušli u folder koji nam je napravljen komandom: <br><code>django-admin startproject ime_projekta</code><br>
+  vidimo folder sa nazivom projekta, fajl <i>manage.py</i> kao i fajl <i>db.sqlite3</i>.
+  </p>
+  <p>
+    Fajl <i>db.sqlite3</i> nam neće trebati jer nećemo raditi sa sqlite bazom već sa MySQL, ali o tome će kasnije biti reči.
+    Tako da, ovaj fajl možete obrisati, a i ne morate, ja za sad neću.
+  </p>
+  <p>
+    Fajl <i>manage.py</i> nam služi za admin komande na projektu. Kao što smo pomoću <i>django-admin</i> komande pravili projekat, 
+    <i>manage.py</i> je maltene isto kao <i>django-admin</i> samo što ga koristimo u toku izrade projekta i on posmatra <i>settings.py</i>
+    fajl i pokreće server po tim podešavanjima. Nama će biti potreban za pokretanje servera, pravljenje novih aplikacij u aplikaciji i rada sa bazom.</p>
+  <p>
+    Velika prednost Djanga je što ima jako dobru dokumentaciju i često umesto da se odgovor nađe na Stack Overflow, nađe se u 
+    njihovoj <a href="https://docs.djangoproject.com/en/3.1/" target="_blank">dokumentaciji</a>.
+  </p>
+  <br>
+  <h3>2. Šta je settings.py?</h3>
+    U folderu nazvanom po imenu projekta nalazi se još fajlova, od kojih je jedan <i>settings.py</i>.
+    <p>Mogu pisati o tome šta se sve radi u ovom fajlu, ali mislim da će se najbolje naučiti kroz rad. </p>
+    <p>Za sad neka bude samo, ovde se nalaze podaci o tome koju bazu koristimo, koje <i>aplikacije</i> imamo unutar naše aplikacije,
+       putanja do šablona, kao i putanja do eksternih fajlova koje ćemo koristiti u aplikaciji (slika, stilova stranice, itd.).
+    </p>
+    <p>Sve ove pojmove ću pojasniti kako ih budemo podešavali.</p>
+
+  <br>
+  <h3>3. Šta je urls.py?</h3>
+  <p>U ovom fajlu čuvamo putanje do stranica u okviru aplikacije.</p>
+  <p>Primer: Ako imamo link <i>nesto.com/stranica1</i>, u fajl u okviru urlpatterns dodamo:<br> 
+    <code>path('stranica1/', views.stranica1)</code>
+    <br>
+    <b>Bitno: nakon imena linka, obavezna je kosa crta!</b>
+    <br>
+    Sad se opet pa pitate šta je <i>views.stranica1</i>, a to je putanja na kojoj se nalazi funkcija koja će prikazati stranicu stranica1.
+    Nalazi se u fajlu <i>views.py</i> koji mi trenutno nemamo, ali ćemo napraviti kad krenemo sa radom.
+  </p>
+
+  <br>
+  <p>Kao što vidite, sve je uvezano i umesto da pišem dalje šta je šta i kako radi, bolje da krenemo da radimo i usput da pojašnjavam.
+     Ovo je bilo objašnjenje da barem okvirno imate u glavi šta za šta služi, pa da bi bilo jasno kada nešto radimo zašto to radimo,
+     mada ću ja i tad napomenuti, neću pretpostavljati da se podrazumeva.
+  </p>
+
+<br>
+  <h3>4. Aplikacije u aplikaciji</h3>
+  <p>Malo pre sam u okviru objašnjenja settings.py spomenuo nekakve aplikacije u aplikaciji. To je samo naziv za nekakvu podaplikaciju u 
+  našoj aplikaciji, npr. login će nam biti jedna podaplikacija, pregled treninga druga, unos treninga treća, itd.
+  <br>
+  Mi možemo sve pisati u ovoj glavnoj aplikaciji (folder koji se naziva po imenu projekta), ali onda bismo morali da jurimo gde se šta nalazi,
+  a ovako ćemo imati modularniji kod i kada želimo nešto da izmenimo odmah znamo gde (u koju podaplikaciju (folder) idemo).
+  </p>
+  <center>
+  <img style="max-width: 50%;height: auto;" src="modularno.jpg">
+  </center>
+  <br>
+  <p>Komandom 
+  <br>
+    <code>python manage.py startapp ime_app</code>
+  <br>
+  pravimo novu podaplikaciju, prva neka se zove index, za početnu stranu.
+  </p>
+  <p>Ono što se sad desilo, napravljen nam je novi folder sa imenom naše nove podaplikacije i unutra možete naći razne fajlove.
+  Nama bitni fajlovi su <i>views.py</i> i <i>models.py</i>. </p>
+  <p><b>Bitno: Kad god napravimo novu podaplikaciju, moramo reći <i>setting.py</i> da ova aplikacija sada postoji.</b></p>
+  <p>U <i>settings.py</i> fajlu unutar glavnog foldera (ne foldera podaplikacije, jer tu settings.py ne postoji), nadjemo: 
+  <br>
+    <code>INSTALLED_APPS = [...]</code>
+  <br>
+  i na kraj dodamo <i>'index'</i> - ime aplikacije koju smo napravili.
+  Sada Django zna da postoji ova aplikacija i sada možemo s njom raditi.
+  
+  </p>
+  <p>Hajde sada da vidimo kako da prikažemo ovu stranicu. Rekli smo da putanje do stranica idu u <i>urls.py</i> .
+  Pošto u index folderu nemamo taj fajl, napravićemo ga.</p>
+  <p>Unutar fajla, nalik na <i>urls.py</i> iz glavnog foldera, imamo urlpatterns, ali ovde ćemo dodati link za našu stranicu:
+  <br>
+    <code>urlpatterns = [
+      path('', views.index)
+    ]
+    </code>
+  <br>
+  Stavljamo prazno '' jer hoćemo da nam početna stranica bude nesto.com, a ne da link ima neki nastavak, to ćemo raditi za druge stranice,
+  ali ne za početnu.
+  Deo <i>views.index</i> znači da u fajlu <i>views.py</i> zovemo funkciju index da nam prikaže taj url. <br>
+  <p>Da bismo koristili path funkciju, moramo je importovati (uključiti u fajl) -> na vrhu urls.py dodamo:
+  <br>
+    <code>from django.urls import path</code>
+    <br>
+  </p>
+  Da bismo koristili views.py, moramo ga importovati -> na vrhu urls.py dodamo:
+  <br>
+    <code>from . import views</code>
+  <br>
+  gde tačka označava da se u trenutnom folderu nalazi import koji nam je potreban. 
+  </p>
+
+  <br>
+  <p>Sada u <i>views.py</i> treba da definišemo funkciju koju smo ovde referisali. U Pythonu se funkcija pravi sintaksom:
+  <br>
+    <code>def ime_funkcije(argumenti): telo funkcije</code>
+  <br>
+  Dakle naša funkcija će izgledati:
+  <br>
+  <!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #008800; font-weight: bold">def</span> <span style="color: #0066BB; font-weight: bold">index</span>(request):
+    <span style="color: #008800; font-weight: bold">return</span> render(request, <span style="background-color: #fff0f0">&#39;index.html&#39;</span>)
+</pre></div>
+<br>
+  Argument request je samo da bismo ga prosledili kao povratnu vrednost, 
+  nećemo ga koristiti u funkciji. O HTTP zahtevima više <a href="https://docs.djangoproject.com/en/3.1/ref/request-response/#django.http.HttpRequest" target="_blank">ovde</a>.
+  <br>
+  Sada je potrebno da definišemo šta je <i>index.html</i>, tj. gde se ta stranica nalazi.
+  </p>
+  <p>U Djangu HTML stranice smeštamo unutar <i>templates</i> foldera koji je na nivou na kom je i glavni folder i folderi podaplikacija.</p>
+  <p>Kada smo napravili taj folder, unutar njega napravimo <i>index.html</i> i za sad smeštamo samo: 
+  <br>
+  <!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #007700">&lt;h1&gt;</span>Index page<span style="color: #007700">&lt;/h1&gt;</span>
+</pre></div>
+
+  <br>
+  <p>Pošto smo napravili novi folder, 
+  moramo to i reći settings.py fajl, pa unutar tog fajla,
+   unutar TEMPLATES dela, pa unutar DIRS, dodajemo 'templates'.</p>
+   <p>Šabloni (template-i) su deo Djanga i ovo je neka standardna procedura sa HTML stranicama, sada samo za svaku novu stranicu
+   dodamo novi .html fajl u templates folder.</p>
+   <p>Poslednje što treba da uradimo je da kažemo glavnoj aplikaciji gde da nađe url podaplikacije, tako da idemo u <i>urls.py</i>
+   i u urlpatterns dodajemo:
+   <br>
+    <code>path('', include('index.urls'))</code>
+   <br>
+   Da bismo koristili include funkciju, umesto <br>
+   <code>from django.urls import path</code>
+   <br>
+   dodamo include pored path, pa izgleda ovako: <br>
+   <code>from django.urls import path, include</code>
+   <br>
+   </p>
+   <p>Ono što smo sad uradili jeste da smo rekli Djangu da kad smo na urlu '' treba da ide u urls.py index podaplikacije,
+    a znamo da kad tamo dođe, isto će naići na '' i pozvati funkciju iz views.py koja će da prikaže index.html.</p>
+  <br>
+  </p>
+  <center>
+    <img style="max-width:50%;height: auto" src="url.jpg">
+  </center>               
+
+  <br>
+
+  <p>Sada kad smo završili sa ovim delom, ostaje nam da zapamtimo promene i okačimo ih na GitHub.</p>
+  <p>Komandom <b>git add .</b> dodajemo fajlove za praćenje. Komanda <b>git status</b> će nam pokazati šta se sve promenilo.</p>
+  <p>Komandom <b>git commit -m "Dodata index app"</b> ćemo zapamtiti sve promene uz poruku. Konačno <b> git push</b> će nam okačiti sve na GitHub.</p>
+
+  <p>Ovde ću stati, ima dosta stvari za preći, 
+  ako nešto ne radi slobodno mi pišite na <a href="https://instagram.com/koderizam" target="_blank">Instagramu</a> 
+  ili <a href="https://facebook.com/koderizam" target="_blank">Facebooku</a>.</p>
+                                
+                                <br><br>
+                                
+                                
+                                <p style="font-size: 25px;">Hvala što ste čitali, nadam se da je bilo korisno. :)</p>
+<div class="meta">
+			<time class="published" datetime="2019-10-16">28. septembar 2020.</time>
+			<a href="http://lazar-ristic.info" target="_blank" class="author"><span class="name">Lazar Ristić</span></a>
+			<i style="font-size: 50px;color:orangered;padding-right: 20px;" class="fab fa-html5"></i>
+		</div>
+        <br><br>
+</div>
+  
+</body>
+</html>

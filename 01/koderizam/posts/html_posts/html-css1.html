@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-150204435-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-150204435-1');
+</script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:500,800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="../../assets/css/hover-min.css">
+    <link rel="stylesheet" href="../../assets/css/style.css">
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+
+    <title>HTML & CSS - osnove</title>
+</head>
+<body>
+
+  <nav class="navbar sticky-top navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="../../index.html" style="color: #fff;"><i>&lt;KDRZM&gt;</i></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+      <div class="navbar-nav ml-auto">
+        <a class="nav-item nav-link html-nav" href="../../pages/html_pages/index.html">HTML</a>
+        <a class="nav-item nav-link css-nav" href="../../pages/css_pages/index.html">CSS</a>
+        <a class="nav-item nav-link js-nav" href="../../pages/js_pages/index.html">JAVASCRIPT</a>
+        <a class="nav-item nav-link php-nav" href="../../pages/php_pages/index.html">PHP</a>
+        <a class="nav-item nav-link py-nav" href="../../pages/py_pages/index.html">PYTHON</a>
+        <a class="nav-item nav-link git-nav" href="../../pages/git_pages/index.html">GIT</a>
+      </div>
+    </div>
+  </nav>
+
+<div class="container">
+<br>
+  <center><h1 style="font-weight: 600;">HTML & CSS - osnove</h1>
+    <h4>1.deo</h>
+  </center>
+
+  <hr style="background-color: #00041b;width: 70%;">
+
+  <p>Za sve koji su skroz početnici u Web Dev-u, danas ćemo praviti prvu web stranicu pomoću HTML-a i CSS-a. Uz to, dodaćemo i Bootstrap,
+  tako da bi na kraju ovog tutorijala trebalo da imate mini-sajt od jedne poduže stranice.
+  </p>
+  <p>
+    S obzirom da se danas koristi dosta HTML i CSS biblioteka da se ubrza rad, a ne kuca se sve od početka, ja ću samo početak kucati
+    da bih objasnio strukturu koda, ali većinski ću koristiti Bootstrap pa ćete tako i videti koliko brzo se može dobiti funkcionalna stranica.
+  </p>
+  <br>
+  <h3>1. Struktura koda</h3>
+  <p>Elemente u HTMLu pišemo između <> zagrada i na početku uvek imamo 3 osnovna elementa: <b>&lt;html&gt;, &lt;head&gt;</b> i <b>&lt;body&gt;</b>.
+    Svaki (skoro) element u HTMLu se zatvara: <b>&lt;/ime_elementa&gt;</b> - npr. za ova 3 osnovna: <b>&lt;/html&gt;, &lt;/head&gt;</b> i <b>&lt;/body&gt;</b>.
+  </p>
+  <p>
+    Kad kažem 3 osnovna elementa, mislim da ih morate imati u svakom .html fajlu i svaki fajl započinjemo na isti način:
+    <!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #557799">&lt;!DOCTYPE html&gt;</span>
+<span style="color: #007700">&lt;html&gt;</span>
+<span style="color: #007700">&lt;head&gt;</span>
+ // neki kod
+<span style="color: #007700">&lt;/head&gt;</span>
+<span style="color: #007700">&lt;body&gt;</span>
+ // neki kod
+<span style="color: #007700">&lt;/body&gt;</span>
+<span style="color: #007700">&lt;/html&gt;</span>
+</pre></div>
+  </p>
+  <br>
+  <p>Ovo <code>&lt;!DOCTYPE html&gt;</code> na početku koda <b>nije</b> HTML element, već informacija pretraživaču koji tip dokumenta da očekuje.</p>
+  <h5>- Head element</h5>
+  <p>Unutar ovog elementa idu drugi HTML elementi koji označavaju linkove ka bibliotekama koje koristimo u fajlu, ime stranice, skripte koje možda koristimo, itd.</p>
+  <p>Primer nekog prosto-popunjenog head elementa:
+  <!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #007700">&lt;head&gt;</span>
+ <span style="color: #007700">&lt;title&gt;</span>Naslov stranice<span style="color: #007700">&lt;/title&gt;</span>
+ <span style="color: #007700">&lt;link</span> <span style="color: #0000CC">rel=</span><span style="background-color: #fff0f0">&quot;stylesheet&quot;</span> <span style="color: #0000CC">href=</span><span style="background-color: #fff0f0">&quot;assets/css/style.css&quot;</span><span style="color: #007700">&gt;</span>
+ <span style="color: #007700">&lt;script&gt;</span> <span style="color: #FF0000; background-color: #FFAAAA">// kod neke skripte </span><span style="color: #007700">&lt;/script&gt;</span>
+<span style="color: #007700">&lt;/head&gt;</span>
+</pre></div>
+ </p>
+ <br>
+ <p>Kao što sam spomenuo, skoro svi elementi se zatvaraju, pa ovde vidimo da se link element ne zatvara.
+    Ime stranice je tekst koji vidimo u otvorenom tabu u pretraživaču. Dok čitate ovo, to je <i>HTML & CSS - osnove</i>.
+ </p>
+ <h5>- Body element</h5>
+ <p>U ovaj element ide sav sadržaj stranice koji je vidljiv korisniku. Znači sve što trenutno vidite na stranici se nalazi u body elementu.</p>
+
+<br>
+<h3>2. Pravljenje stranice</h3>
+<p>Za početak napravite folder pod kojim god imenom želite i unutra napravite novi fajl pod imenom <i>index.html</i>. 
+Ovo je neki nepisani princip da se glavna strana sajta naziva ovako, ali može i npr. <i>home.html</i>, što je ređi slučaj.</p>
+<p>Počećemo,  inicijalizacijom repozitorijuma na gitu i pravljenjem istog na GitHubu. Redom izvršavamo komande:
+<br>
+<code>git init</code><br>
+<code>git add .</code><br>
+<code>git commit -m "Intital commit"</code><br>
+Zatim idemo na GitHub i pravimo novi repozitorijum, pa zatim izvršavamo donji skup komandi kada napravimo repozitorijum:<br>
+<code>git remote add origin link_ka_vasem_repozitorijumu</code><br>
+<code>git branch -M master</code><br>
+<code>git push -u origin master</code><br>
+Nakon toga, trebalo bi da vidite <i>index.html</i> u repozitorijumu na GitHubu.
+</p>
+<p>
+    U <i>index.html</i> fajlu, pišemo osnovu, kao što sam gore naveo. Za ovaj deo tutorijala, dodaćemo meni na vrh stranice,
+    dodaćemo naslov, nekakav tekst, kao i dugme koje će nas voditi na neki drugi sajt. Za početak :)
+</p>
+<p>Prvo osnova: 
+    <div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #557799">&lt;!DOCTYPE html&gt;</span>
+<span style="color: #007700">&lt;html&gt;</span>
+<span style="color: #007700">&lt;head&gt;</span>
+
+<span style="color: #007700">&lt;/head&gt;</span>
+<span style="color: #007700">&lt;body&gt;</span>
+
+<span style="color: #007700">&lt;/body&gt;</span>
+<span style="color: #007700">&lt;/html&gt;</span>
+</pre></div>
+</p>
+<p>U head element ćemo prvo dodati ime stranice, a u body ćemo dodati naslov.
+ Naslovi u HTMLu su tagovi h1, h2, do h6, gde je h1 najvećeg fonta, a h6 najmanjeg.</p>
+ <!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #557799">&lt;!DOCTYPE html&gt;</span>
+<span style="color: #007700">&lt;html&gt;</span>
+<span style="color: #007700">&lt;head&gt;</span>
+ <span style="color: #007700">&lt;title&gt;</span>Home page<span style="color: #007700">&lt;/title&gt;</span>
+<span style="color: #007700">&lt;/head&gt;</span>
+<span style="color: #007700">&lt;body&gt;</span>
+ <span style="color: #007700">&lt;h1&gt;</span>Home<span style="color: #007700">&lt;/h1&gt;</span>
+<span style="color: #007700">&lt;/body&gt;</span>
+<span style="color: #007700">&lt;/html&gt;</span>
+</pre></div>
+<br>
+<p>Dalje, dodaćemo nekakav tekst ispod ovog naslova. 
+Umesto da smišljam šta da bude nekakav tekst, uzeću prozivoljan na <a target="_blank" href="https://www.lipsum.com/">Lorem ipsum</a>.
+Tu možete generisati koliko želite teksta, pa ga samo prekopirajte. </p>
+<p>Običan tekst, paragraf ide u p element HTMLa.</p>
+<!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #557799">&lt;!DOCTYPE html&gt;</span>
+<span style="color: #007700">&lt;html&gt;</span>
+<span style="color: #007700">&lt;head&gt;</span>
+ <span style="color: #007700">&lt;title&gt;</span>Home page<span style="color: #007700">&lt;/title&gt;</span>
+<span style="color: #007700">&lt;/head&gt;</span>
+<span style="color: #007700">&lt;body&gt;</span>
+ <span style="color: #007700">&lt;h1&gt;</span>Home<span style="color: #007700">&lt;/h1&gt;</span>
+ <span style="color: #007700">&lt;p&gt;</span>Tekst<span style="color: #007700">&lt;/p&gt;</span>
+<span style="color: #007700">&lt;/body&gt;</span>
+<span style="color: #007700">&lt;/html&gt;</span>
+</pre></div>
+
+<br>
+<p>Još da dodamo meni i dugme, pa da onda napravimo da ovo liči na nešto, s obzirom da je sad samo sve nabacano.</p>
+<p>Za meni, biće nam potrebna Bootstrap biblioteka koju ćemo linkovati u head elementu. Linkove ka bibliotekama uzimamo na: 
+<a target="_blank" href="https://www.bootstrapcdn.com/">Bootstrap CDN</a>.</p>
+<!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #557799">&lt;!DOCTYPE html&gt;</span>
+<span style="color: #007700">&lt;html&gt;</span>
+<span style="color: #007700">&lt;head&gt;</span>
+ <span style="color: #007700">&lt;title&gt;</span>Home page<span style="color: #007700">&lt;/title&gt;</span>
+ <span style="color: #007700">&lt;link</span> <span style="color: #0000CC">rel=</span><span style="background-color: #fff0f0">&quot;stylesheet&quot;</span> <span style="color: #0000CC">href=</span><span style="background-color: #fff0f0">&quot;https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css&quot;</span><span style="color: #007700">&gt;</span>
+<span style="color: #007700">&lt;/head&gt;</span>
+<span style="color: #007700">&lt;body&gt;</span>
+ <span style="color: #007700">&lt;h1&gt;</span>Home<span style="color: #007700">&lt;/h1&gt;</span>
+ <span style="color: #007700">&lt;p&gt;</span>Tekst<span style="color: #007700">&lt;/p&gt;</span>
+<span style="color: #007700">&lt;/body&gt;</span>
+<span style="color: #007700">&lt;/html&gt;</span>
+</pre></div>
+<br>
+<p>Link element ima rel i href opcije: rel opcija označava vezu između HTML stranice i dokumenta koji je linkovan. 
+Ovde stavljamo <i>stylesheet</i> jer je ovo CSS biblioteka, koja određuje stil stranice. Svaki put kada koristimo CSS biblioteku, veza sa HTML stranicom je stylesheet.
+Deo href je zapravo putanja ka tom dokumentu koji koristimo.</p>
+<br>
+<p>Kada god koristimo Bootstrap, koristimo CSS biblioteku i Javascript biblioteku, 
+tako da je potrebno i nju povezati, 
+a da bi ona radila potrebna nam je i <a href="https://code.jquery.com" target="_blank">jQuery biblioteka</a>. Uzimamo 3.x minified verziju.
+ Više o njoj: <a href="https://jquery.com/">jQuery</a>.</p>
+ <p><b>Bitno: da bi Javascript Bootstrap biblioteka radila, potrebno je da jQuery bude linkovan pre JS biblioteke!</b></p>
+<!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #557799">&lt;!DOCTYPE html&gt;</span>
+<span style="color: #007700">&lt;html&gt;</span>
+<span style="color: #007700">&lt;head&gt;</span>
+ <span style="color: #007700">&lt;title&gt;</span>Home page<span style="color: #007700">&lt;/title&gt;</span>
+ <span style="color: #007700">&lt;link</span> <span style="color: #0000CC">rel=</span><span style="background-color: #fff0f0">&quot;stylesheet&quot;</span> <span style="color: #0000CC">src=</span><span style="background-color: #fff0f0">&quot;https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css&quot;</span><span style="color: #007700">&gt;</span>
+ <span style="color: #007700">&lt;script </span><span style="color: #0000CC">src=</span><span style="background-color: #fff0f0">&quot;https://code.jquery.com/jquery-3.5.1.min.js&quot;</span> <span style="color: #0000CC">integrity=</span><span style="background-color: #fff0f0">&quot;sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=&quot;</span> <span style="color: #0000CC">crossorigin=</span><span style="background-color: #fff0f0">&quot;anonymous&quot;</span><span style="color: #007700">&gt;&lt;/script&gt;</span>
+ <span style="color: #007700">&lt;script </span><span style="color: #0000CC">src=</span><span style="background-color: #fff0f0">&quot;https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js&quot;</span><span style="color: #007700">&gt;&lt;/script&gt;</span>
+<span style="color: #007700">&lt;/head&gt;</span>
+<span style="color: #007700">&lt;body&gt;</span>
+ <span style="color: #007700">&lt;h1&gt;</span>Home<span style="color: #007700">&lt;/h1&gt;</span>
+ <span style="color: #007700">&lt;p&gt;</span>Tekst<span style="color: #007700">&lt;/p&gt;</span>
+<span style="color: #007700">&lt;/body&gt;</span>
+<span style="color: #007700">&lt;/html&gt;</span>
+</pre></div>
+
+
+<p>Opcija src je ista kao href, putanja do fajla koji koristimo.</p>
+<p>Sada kada smo povezali Bootstrap, idemo na njihov sajt i bukvalno kopiramo koda za meni:
+<a href="https://getbootstrap.com/docs/4.0/components/navbar/" target="_blank">ovde</a>. 
+Možete naći primere različitih menija, izaberete koji vam se najviše sviđa i bukvalno prekopirate kod u vaš body element. 
+S obzirom da kada radite sa HTML kodom, pišete kao da slažete blok jedan na drugi, a mi hoćemo da nam meni bude na vrhu stranice, pa ćemo i kod za meni staviti odmah po otvaranju body elementa.</p>
+<!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #557799">&lt;!DOCTYPE html&gt;</span>
+<span style="color: #007700">&lt;html&gt;</span>
+<span style="color: #007700">&lt;head&gt;</span>
+ <span style="color: #007700">&lt;title&gt;</span>Home page<span style="color: #007700">&lt;/title&gt;</span>
+ <span style="color: #007700">&lt;link</span> <span style="color: #0000CC">rel=</span><span style="background-color: #fff0f0">&quot;stylesheet&quot;</span> <span style="color: #0000CC">href=</span><span style="background-color: #fff0f0">&quot;https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css&quot;</span><span style="color: #007700">&gt;</span>
+ <span style="color: #007700">&lt;script </span><span style="color: #0000CC">src=</span><span style="background-color: #fff0f0">&quot;https://code.jquery.com/jquery-3.5.1.min.js&quot;</span> <span style="color: #0000CC">integrity=</span><span style="background-color: #fff0f0">&quot;sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=&quot;</span> <span style="color: #0000CC">crossorigin=</span><span style="background-color: #fff0f0">&quot;anonymous&quot;</span><span style="color: #007700">&gt;&lt;/script&gt;</span>
+ <span style="color: #007700">&lt;script </span><span style="color: #0000CC">src=</span><span style="background-color: #fff0f0">&quot;https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js&quot;</span><span style="color: #007700">&gt;&lt;/script&gt;</span>
+<span style="color: #007700">&lt;/head&gt;</span>
+<span style="color: #007700">&lt;body&gt;</span>
+<span style="color: #007700">&lt;nav</span> <span style="color: #0000CC">class=</span><span style="background-color: #fff0f0">&quot;navbar navbar-expand-lg navbar-light bg-light&quot;</span><span style="color: #007700">&gt;</span>
+  <span style="color: #007700">&lt;a</span> <span style="color: #0000CC">class=</span><span style="background-color: #fff0f0">&quot;navbar-brand&quot;</span> <span style="color: #0000CC">href=</span><span style="background-color: #fff0f0">&quot;#&quot;</span><span style="color: #007700">&gt;</span>Navbar<span style="color: #007700">&lt;/a&gt;</span>
+  <span style="color: #007700">&lt;button</span> <span style="color: #0000CC">class=</span><span style="background-color: #fff0f0">&quot;navbar-toggler&quot;</span> <span style="color: #0000CC">type=</span><span style="background-color: #fff0f0">&quot;button&quot;</span> <span style="color: #0000CC">data-toggle=</span><span style="background-color: #fff0f0">&quot;collapse&quot;</span> <span style="color: #0000CC">data-target=</span><span style="background-color: #fff0f0">&quot;#navbarNavAltMarkup&quot;</span> <span style="color: #0000CC">aria-controls=</span><span style="background-color: #fff0f0">&quot;navbarNavAltMarkup&quot;</span> <span style="color: #0000CC">aria-expanded=</span><span style="background-color: #fff0f0">&quot;false&quot;</span> <span style="color: #0000CC">aria-label=</span><span style="background-color: #fff0f0">&quot;Toggle navigation&quot;</span><span style="color: #007700">&gt;</span>
+    <span style="color: #007700">&lt;span</span> <span style="color: #0000CC">class=</span><span style="background-color: #fff0f0">&quot;navbar-toggler-icon&quot;</span><span style="color: #007700">&gt;&lt;/span&gt;</span>
+  <span style="color: #007700">&lt;/button&gt;</span>
+  <span style="color: #007700">&lt;div</span> <span style="color: #0000CC">class=</span><span style="background-color: #fff0f0">&quot;collapse navbar-collapse&quot;</span> <span style="color: #0000CC">id=</span><span style="background-color: #fff0f0">&quot;navbarNavAltMarkup&quot;</span><span style="color: #007700">&gt;</span>
+    <span style="color: #007700">&lt;div</span> <span style="color: #0000CC">class=</span><span style="background-color: #fff0f0">&quot;navbar-nav&quot;</span><span style="color: #007700">&gt;</span>
+      <span style="color: #007700">&lt;a</span> <span style="color: #0000CC">class=</span><span style="background-color: #fff0f0">&quot;nav-item nav-link active&quot;</span> <span style="color: #0000CC">href=</span><span style="background-color: #fff0f0">&quot;#&quot;</span><span style="color: #007700">&gt;</span>Home <span style="color: #007700">&lt;span</span> <span style="color: #0000CC">class=</span><span style="background-color: #fff0f0">&quot;sr-only&quot;</span><span style="color: #007700">&gt;</span>(current)<span style="color: #007700">&lt;/span&gt;&lt;/a&gt;</span>
+      <span style="color: #007700">&lt;a</span> <span style="color: #0000CC">class=</span><span style="background-color: #fff0f0">&quot;nav-item nav-link&quot;</span> <span style="color: #0000CC">href=</span><span style="background-color: #fff0f0">&quot;#&quot;</span><span style="color: #007700">&gt;</span>Features<span style="color: #007700">&lt;/a&gt;</span>
+      <span style="color: #007700">&lt;a</span> <span style="color: #0000CC">class=</span><span style="background-color: #fff0f0">&quot;nav-item nav-link&quot;</span> <span style="color: #0000CC">href=</span><span style="background-color: #fff0f0">&quot;#&quot;</span><span style="color: #007700">&gt;</span>Pricing<span style="color: #007700">&lt;/a&gt;</span>
+      <span style="color: #007700">&lt;a</span> <span style="color: #0000CC">class=</span><span style="background-color: #fff0f0">&quot;nav-item nav-link disabled&quot;</span> <span style="color: #0000CC">href=</span><span style="background-color: #fff0f0">&quot;#&quot;</span><span style="color: #007700">&gt;</span>Disabled<span style="color: #007700">&lt;/a&gt;</span>
+    <span style="color: #007700">&lt;/div&gt;</span>
+  <span style="color: #007700">&lt;/div&gt;</span>
+<span style="color: #007700">&lt;/nav&gt;</span>
+ <span style="color: #007700">&lt;h1&gt;</span>Home<span style="color: #007700">&lt;/h1&gt;</span>
+ <span style="color: #007700">&lt;p&gt;</span>
+    Lorem ipsum tekst
+ <span style="color: #007700">&lt;/p&gt;</span>
+<span style="color: #007700">&lt;/body&gt;</span>
+<span style="color: #007700">&lt;/html&gt;</span>
+</pre></div>
+<br>
+<p>Stranica bi trebalo da vam izgleda ovako: </p>
+<img src="stranica1.jpg" style="max-width: 75%;height:auto;border: 1px solid black;"/>
+<br><br>
+<p>Kao što vidite, meni je tu, ali još uvek nije funkcionalan, a to i stilizovanje stranice ćemo odraditi u drugom delu.</p>
+<p>Ostalo je još da sve ovo okačimo na GitHub.</p>
+<p>Komande: <br>
+<code>git add .</code><br>
+<code>git commit -m "Dodat meni, naslov i tekst"</code><br>
+<code>git push</code><br>
+će odraditi to što nam treba.
+
+</p>
+<p>Ukoliko je bilo problema, možete skinuti kod sa mog <a href="https://github.com/lristic/html-css-osnove" target="_blank">GitHuba</a>, 
+ili me kontaktirati na <a href="https://facebook.com/koderizam" target="_blank">Fejsbuku</a>
+ili <a href="https://instagram.com/koderizam" target="_blank">Instagramu</a>.
+
+
+                                
+
+                                <br><br>
+        <p>Hvala što ste čitali, nadam se da je bilo korisno :)</p>
+
+        <div class="meta">
+			<time class="published" datetime="2019-10-16">30. septembar 2020.</time>
+			<a href="http://lazar-ristic.info" target="_blank" class="author"><span class="name">Lazar Ristić</span></a>
+			<i style="font-size: 50px;color:orangered;padding-right: 20px;" class="fab fa-html5"></i>
+		</div>
+
+        <br><br>
+        
+
+</div>
+
+  
+</body>
+</html>

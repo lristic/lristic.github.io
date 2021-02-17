@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-150204435-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-150204435-1');
+</script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:500,800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="../../assets/css/hover-min.css">
+    <link rel="stylesheet" href="../../assets/css/style.css">
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+
+    <title>Rad na projektu preko Gita i GitHuba | Koderizam</title>
+</head>
+<body>
+
+  <nav class="navbar sticky-top navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="../../index.html" style="color: #fff;"><i>&lt;KDRZM&gt;</i></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+      <div class="navbar-nav ml-auto">
+        <a class="nav-item nav-link html-nav" href="../../pages/html_pages/index.html">HTML</a>
+        <a class="nav-item nav-link css-nav" href="../../pages/css_pages/index.html">CSS</a>
+        <a class="nav-item nav-link js-nav" href="../../pages/js_pages/index.html">JAVASCRIPT</a>
+        <a class="nav-item nav-link php-nav" href="../../pages/php_pages/index.html">PHP</a>
+        <a class="nav-item nav-link py-nav" href="../../pages/py_pages/index.html">PYTHON</a>
+        <a class="nav-item nav-link git-nav" href="../../pages/git_pages/index.html">GIT</a>
+      </div>
+    </div>
+  </nav>
+
+<div class="container">
+<br>
+<center>
+    <h1 style="font-weight: 600;">Rad na projektu preko Gita i GitHuba</h1>
+
+</center>
+  <hr style="background-color: #00041b;width: 70%;">
+  <p>U ovoj objavi, na brzinu ćemo preći kroz pravljenje repozitorijuma na GitHubu, inicijalizaciju projekta u gitu i pamćenje promena,
+  tj. kroz neki opšti proces kada radimo na bilo kom projektu i želimo da ga okačimo na GitHub. S obzirom da u svakom tutorijalu želim da kačim na GitHub stvari koje radimo,
+  a da ne bih objašnjavao svaki put iz početka kako se ovo radi, pravim ovo zasebno objašnjenje na koje ću se pozivati u svakom tutorijalu.
+  </p><br>
+  <h3>1. Instalacija Gita i inicijalizacija projekta</h3>
+  <p>Na ovom <a href="https://git-scm.com/download/win" target="_blank">linku</a>, možete skinuti Git i kada ga instalirate spremni ste za rad sa njim.</p>
+  <p>Dakle, nakon instalacije potrebno je da napravite folder sa nazivom vašeg projekta, u terminalu se pozicionirate u taj folder i izvršite komandu: <br>
+  <code>git init</code><br>
+  i tako će Git znati da u tom folderu treba da prati promene u fajlovima u tom folderu.
+  <br>
+  Napravimo neki probni fajl koji ćemo pripremiti za inicijalni commit, npr. ako radimo neku veb stranicu nek bude prazan <i>index.html</i>.
+  <br>
+  Komandama:<br>
+  <code>git add .</code><br>
+  <code>git commit -m "Initial commit"</code><br>
+  spremamo taj fajl za inicijalno pamćenje (commit). 
+  </p>
+  <br>
+  <h3>2. Pravljenje repozitorijuma na GitHubu</h3>
+  <p>Na GitHubu, kada napravite svoj nalog, u gornjem desnom uglu ćete videti: </p>
+  <img src="../py_posts/github1.jpg" style="max-width: 75%;height:auto;">
+  <br>
+  <p>Biramo New repository i u novom prozoru dajemo ime repozitorijumu i pravimo ga. Nakon toga, iskoćiće nam ekran:
+  </p> 
+  <img src="../py_posts/github2.jpg" style="max-width: 75%;height:auto;">
+  <p>Izvršavamo donji skup komandi koji će nam prebaciti na GitHub onaj <i>index.html</i> koji smo pripremili za inicijalni commit.</p>
+  <br>
+  <h3>3. Dalji rad</h3>
+  <p>Ubuduće, kada god želimo da upamtimo promene koje smo napravili, komande koje izvršavamo su:<br>
+  <code>git add .</code> - dodajemo sve fajlove u red za pamćenje<br>
+  <code>git commit -m "Poruka koja opisuje šta je promenjeno"</code> - pamtimo promene<br>
+  <code>git push</code> - šaljemo na GitHub repozitorijum
+  </p>
+  <p>Ovo je neki osnovni rad sa Gitom i GitHubom kada radite sami na svom nekom projektu, a sigurno ću pokriti i slučaj kada radite u timu i
+  kada je projekat već postojeći a vi treba da ga skinete sa GitHuba.</p>
+
+  <p>Komande nisam detaljno opisivao šta rade, to možete pogledati na: <a href="https://programmer-buddy.com/blog/item/1">9 git komandi koje moraš da znaš</a>.</p>
+  
+
+  <p>Ovo je bio samo kratak prolaz kroz svaki početak tutorijala, 
+  ako nešto ne radi slobodno mi pišite na <a href="https://instagram.com/koderizam" target="_blank">Instagramu</a> 
+  ili <a href="https://facebook.com/koderizam" target="_blank">Facebooku</a>.</p>
+                                
+                                <br><br>
+                                
+                                
+                                <p style="font-size: 25px;">Hvala što ste čitali, nadam se da je bilo korisno. :)</p>
+<div class="meta">
+			<time class="published" datetime="2019-10-16">1. oktobar 2020.</time>
+			<a href="http://lazar-ristic.info" target="_blank" class="author"><span class="name">Lazar Ristić</span></a>
+			<i style="font-size: 50px;color:orangered;padding-right: 20px;" class="fab fa-html5"></i>
+		</div>
+        <br><br>
+</div>
+  
+</body>
+</html>

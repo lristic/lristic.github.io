@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-150204435-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-150204435-1');
+</script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:500,800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="../../assets/css/hover-min.css">
+    <link rel="stylesheet" href="../../assets/css/style.css">
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+
+    <title>Flickity - jednostavna carousel galerija</title>
+</head>
+<body>
+
+  <nav class="navbar sticky-top navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="../../index.html" style="color: #fff;"><i>&lt;KDRZM&gt;</i></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+      <div class="navbar-nav ml-auto">
+        <a class="nav-item nav-link html-nav" href="../../pages/html_pages/index.html">HTML</a>
+        <a class="nav-item nav-link css-nav" href="../../pages/css_pages/index.html">CSS</a>
+        <a class="nav-item nav-link js-nav" href="../../pages/js_pages/index.html">JAVASCRIPT</a>
+        <a class="nav-item nav-link php-nav" href="../../pages/php_pages/index.html">PHP</a>
+        <a class="nav-item nav-link py-nav" href="../../pages/py_pages/index.html">PYTHON</a>
+        <a class="nav-item nav-link git-nav" href="../../pages/git_pages/index.html">GIT</a>
+      </div>
+    </div>
+  </nav>
+  
+
+<div class="container">
+<br>
+  <center><h1 style="font-weight: 600;">Flickity - jednostavna carousel galerija</h1></center>
+  <hr style="background-color: #00041b;width: 70%;">
+
+  <p>Danas ću vam pokazati Flickity, jednostavnu caorusel galeriju sa swipe efektom.</p>
+  <p>U <i>index.html</i>, dodaćemo stvari potrebne za galeriju, koje možete pronaći na <a href="https://flickity.metafizzy.co/" target="_blank"> zvaničnom sajtu.</a> CDN fajlove možete naći na početnoj strani. Takođe, trebaće nam jQuery koji možete naći na <a href="https://code.jquery.com/">sajtu.</a>
+   Koristićemo <i>minified</i> verziju jQuery 3.x.</p>
+  <p>Nakon povezivanja, kod bi trebalo da izgleda ovako:</p>
+								
+								<!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin: 0; line-height: 125%"> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21</pre></td><td><pre style="margin: 0; line-height: 125%"><span style="color: #557799">&lt;!DOCTYPE html&gt;</span>
+<span style="color: #007700">&lt;html</span> <span style="color: #0000CC">lang=</span><span style="background-color: #fff0f0">&quot;en&quot;</span><span style="color: #007700">&gt;</span>
+<span style="color: #007700">&lt;head&gt;</span>
+    <span style="color: #007700">&lt;meta</span> <span style="color: #0000CC">charset=</span><span style="background-color: #fff0f0">&quot;UTF-8&quot;</span><span style="color: #007700">&gt;</span>
+    <span style="color: #007700">&lt;title&gt;</span>Flickity<span style="color: #007700">&lt;/title&gt;</span>
+    
+    <span style="color: #888888">&lt;!--- jQuery ---&gt;</span>
+    <span style="color: #007700">&lt;script </span><span style="color: #0000CC">src=</span><span style="background-color: #fff0f0">&quot;https://code.jquery.com/jquery-3.4.1.min.js&quot;</span> <span style="color: #0000CC">integrity=</span><span style="background-color: #fff0f0">&quot;sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=&quot;</span> <span style="color: #0000CC">crossorigin=</span><span style="background-color: #fff0f0">&quot;anonymous&quot;</span><span style="color: #007700">&gt;&lt;/script&gt;</span>
+    
+    <span style="color: #888888">&lt;!--- Flickity files ---&gt;</span>
+        <span style="color: #007700">&lt;link</span> <span style="color: #0000CC">rel=</span>
+        <span style="background-color: #fff0f0">&quot;stylesheet&quot;</span> 
+        <span style="color: #0000CC">href=</span><span style="background-color: #fff0f0">&quot;https://unpkg.com/flickity@2/dist/flickity.min.css&quot;</span><span style="color: #007700">&gt;</span>
+        <span style="color: #007700">&lt;script </span><span style="color: #0000CC">src=</span><span style="background-color: #fff0f0">&quot;https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js&quot;</span><span style="color: #007700">&gt;&lt;/script&gt;</span>
+        
+    
+      
+<span style="color: #007700">&lt;/head&gt;</span>
+<span style="color: #007700">&lt;body&gt;</span>
+   
+     
+    
+<span style="color: #007700">&lt;/body&gt;</span>
+<span style="color: #007700">&lt;/html&gt;</span>
+</pre></td></tr></table>
+                               </div>
+                               
+<p>Bitna stvar, jQuery treba da bude linkovan prvi, pre Flickity galerije. 
+<br>Prvo, inicijalizujemo Flickity preko jQuery-ja odmah ispod zatvorenog <code> body </code> taga:</p>
+								<!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin: 0; line-height: 125%">1
+2
+3
+4
+5
+6
+7
+8
+9</pre></td><td><pre style="margin: 0; line-height: 125%"><span style="color: #007700">&lt;script&gt;</span>
+    $(<span style="background-color: #fff0f0">&#39;.main-carousel&#39;</span>).flickity({
+        <span style="color: #888888">// options</span>
+        cellAlign<span style="color: #333333">:</span> <span style="background-color: #fff0f0">&#39;center&#39;</span>,
+        contain<span style="color: #333333">:</span> <span style="color: #008800; font-weight: bold">true</span>,
+        
+    });
+    
+<span style="color: #007700">&lt;/script&gt;</span>
+</pre></td></tr></table>
+                               </div>
+
+<p>Sada dodajemo HTML kod na koji će uticati jQuery. Unutar <code>body</code> taga, dodajemo: </p>
+                               <!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin: 0; line-height: 125%">1
+2
+3
+4
+5
+6
+7
+8
+9</pre></td><td><pre style="margin: 0; line-height: 125%"><span style="color: #007700">&lt;div</span> <span style="color: #0000CC">class=</span><span style="background-color: #fff0f0">&quot;main-carousel&quot;</span><span style="color: #007700">&gt;</span>
+      
+      <span style="color: #007700">&lt;div</span> <span style="color: #0000CC">class=</span><span style="background-color: #fff0f0">&quot;carousel-cell&quot;</span> <span style="color: #0000CC">style=</span><span style="background-color: #fff0f0">&quot;background-color: darkred;width:100%;text-align:center;height:300px;&quot;</span><span style="color: #007700">&gt;&lt;h1&gt;</span>1<span style="color: #007700">&lt;/h1&gt;&lt;/div&gt;</span>
+      <span style="color: #007700">&lt;div</span> <span style="color: #0000CC">class=</span><span style="background-color: #fff0f0">&quot;carousel-cell&quot;</span> <span style="color: #0000CC">style=</span><span style="background-color: #fff0f0">&quot;background-color: yellow;width:100%;text-align:center;height:300px;&quot;</span><span style="color: #007700">&gt;&lt;h1&gt;</span>2<span style="color: #007700">&lt;/h1&gt;&lt;/div&gt;</span>
+      <span style="color: #007700">&lt;div</span> <span style="color: #0000CC">class=</span><span style="background-color: #fff0f0">&quot;carousel-cell&quot;</span> <span style="color: #0000CC">style=</span><span style="background-color: #fff0f0">&quot;background-color: darkgreen;width:100%;text-align:center;height:300px;&quot;</span><span style="color: #007700">&gt;&lt;h1&gt;</span>3<span style="color: #007700">&lt;/h1&gt;&lt;/div&gt;</span>
+      <span style="color: #007700">&lt;div</span> <span style="color: #0000CC">class=</span><span style="background-color: #fff0f0">&quot;carousel-cell&quot;</span> <span style="color: #0000CC">style=</span><span style="background-color: #fff0f0">&quot;background-color: darkblue;width:100%;text-align:center;height:300px;&quot;</span><span style="color: #007700">&gt;&lt;h1&gt;</span>4<span style="color: #007700">&lt;/h1&gt;&lt;/div&gt;</span>
+      <span style="color: #007700">&lt;div</span> <span style="color: #0000CC">class=</span><span style="background-color: #fff0f0">&quot;carousel-cell&quot;</span> <span style="color: #0000CC">style=</span><span style="background-color: #fff0f0">&quot;background-color:darkorange;width:100%;text-align:center;height:300px;&quot;</span><span style="color: #007700">&gt;&lt;h1&gt;</span>5<span style="color: #007700">&lt;/h1&gt;&lt;/div&gt;</span>
+  
+    <span style="color: #007700">&lt;/div&gt;</span>
+</pre></td></tr></table>
+                               </div>
+
+<p>Dodao sam boje svakoj od ćelija da bi smo lakše videli efekat. 
+Unutar div tagova može biti bilo šta, zavisi šta vam je potrebno.</p>
+<p>I to je sve! :) 
+Možete se igrati sa različitim opcijama koje nudi ova galerija, a koje mogu biti pronađene na njihovom sajtu. 
+Navešću par primera: <br> 
+1. Ako želite beskonačni skrol, što znači (u ovom slučaju) da kada stignete do petog div taga, 
+možete nastaviti dalje što će vas dovesti na prvi div tag, umesto da se vraćate nazad preko svih. 
+Ova opcija se zove <b>wrapAround</b> i podesite <code>true</code> vrednost u jQuery-ju.<br>
+2. Još jedna sjajna opcija je <b>autoPlay</b>, koja automatski menja "slajdove" redom. 
+Vrednost je u milisekundama što znači da će toliko sekundi određeni slajd biti prikazan, pre prebacivanja na sledeći.<br>
+3. Zajedno sa prethodnom opcijom ide i ova, autoPlay automatski prestaje kada pređete mišem preko galerije, 
+tako da ja lično volim da isključim ovo, tako da uvek automatski menja slajdove. 
+Ova opcija se zove <b>pauseAutoPlayOnHover</b> i vrednost se postavi na <code>false</code>.</p>
+<p>Sada, naš jQuery kod bi trebalo da izgleda ovako: </p>
+                               <!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin: 0; line-height: 125%"> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11</pre></td><td><pre style="margin: 0; line-height: 125%"><span style="color: #007700">&lt;script&gt;</span>
+    $(<span style="background-color: #fff0f0">&#39;.main-carousel&#39;</span>).flickity({
+        <span style="color: #888888">// options</span>
+        cellAlign<span style="color: #333333">:</span> <span style="background-color: #fff0f0">&#39;center&#39;</span>,
+        contain<span style="color: #333333">:</span> <span style="color: #008800; font-weight: bold">true</span>,
+        autoPlay<span style="color: #333333">:</span> <span style="color: #0000DD; font-weight: bold">1500</span>,
+        pauseAutoPlayOnHover<span style="color: #333333">:</span> <span style="color: #008800; font-weight: bold">false</span>,
+        wrapAround<span style="color: #333333">:</span><span style="color: #008800; font-weight: bold">true</span>
+    });
+    
+<span style="color: #007700">&lt;/script&gt;</span>
+</pre></td></tr></table>
+                                </div>
+                                <br>
+<p>Na ekranu bi trebalo da vidite nešto poput ovoga: </p>
+                                <img style="max-width: 100%;height: auto;" src="../../assets/img/flickity.gif">
+
+                                <br><br>
+<p style="font-size: 25px;">Hvala što ste čitali, nadam se da je bilo korisno. :)</p>
+<div class="meta">
+			<time class="published" datetime="2019-10-16">20. avgust 2020.</time>
+			<a href="http://lazar-ristic.info" target="_blank" class="author"><span class="name">Lazar Ristić</span></a>
+			<i style="font-size: 50px;color:orangered;padding-right: 20px;" class="fab fa-html5"></i>
+</div>
+<br>
+
+<h4>Omiljeno:</h4>
+<div class="row">
+      
+        <div class="col-md-5 latest-article left">
+          <a href="posts/html_posts/emmet.html"><h4>Emmet - HTML na brži način</h4></a>
+          <p>Lazar Ristić<br>30. mart, 2020.</p>
+          <img src="../../assets/img/html_logo.png"/>
+        </div>
+
+        <div class="col-md-5 latest-article right">
+          <a href="../php_posts/phpform1.html"><h4>Pravljenje proste forme pomoću PHP i MySQL</h4></a>
+          <h6 style="color: white;">1. deo</h6>
+          <p>Lazar Ristić<br>20. februar, 2020.</p>
+          <img src="../../assets/img/php_logo.png"/>
+        </div>
+    </div>
+
+<br><br>
+
+  
+</body>
+</html>
