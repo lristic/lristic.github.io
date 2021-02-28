@@ -1,0 +1,95 @@
+html{
+    position:relative;
+    min-height: 100%;
+}
+body {
+  background-color: #00272B;
+  font-family: 'Montserrat';
+  color: #E0FF4F;
+  margin: 0 auto;
+}
+
+footer{
+    position:absolute;
+    bottom:0;
+    right:0;
+}
+
+a {
+    color: #B8D141;
+}
+
+@media (max-width: 1198px) {
+    #refresh:hover {
+        background-color: #e0ff4f!important;
+        border: 2px solid #e0ff4f!important;
+        color: #00272b!important;
+    }
+}
+
+
+#title {
+  font-size: 25px;
+  font-style:italic;
+}
+
+#year {
+    font-size: 20px;
+    margin-bottom: 0;
+}
+
+#rating{
+    font-size: 20px;
+}
+
+#actors{
+    font-size: 20px;
+}
+
+#link a {
+  text-decoration: none;
+  color: orange;
+}
+
+#link a:hover {
+  text-decoration: underline;
+}
+
+#refresh {
+  cursor: pointer;
+  background-color: #e0ff4f;
+  border: 2px solid #e0ff4f;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 20px;
+  padding-right: 20px;
+  font-size: 20px;
+    font-family:'Montserrat';
+    border-radius: 10px;
+}
+
+#refresh:hover{
+    background-color: #00272b;
+    border: 2px solid #e0ff4f;
+    color: #e0ff4f;
+    transition: 0.2s ease;
+}
+
+.content {
+    left:0; right:0;
+    top:0; bottom:0;
+    margin:auto;
+    max-width:100%;
+    max-height:100%;
+    overflow:auto;
+}
+
+
+@media(max-width: 736px){
+    body{
+        font-size: 15px;
+    }
+    h1{
+        font-size: 30px!important;
+    }
+}
