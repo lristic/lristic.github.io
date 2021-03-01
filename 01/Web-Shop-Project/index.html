@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>shoppp.</title>
+        
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"/>
+        <link rel="stylesheet" href="style.css" />
+        
+        
+        <script src="store.js" async></script>
+    </head>
+    <body>
+        <header class="main-header">
+           
+            <h1 style="color: #0f0326;margin-top: 0;margin-left: 25px;">shoppp.</h1>
+        </header>
+        <section class="container content-section">
+            <center><h2 style="color:#0F0326;font-size:40px;">items.</h2></center>
+            <div class="shop-items">
+                <div class="shop-item">
+                    <span class="shop-item-title">denim skirt.</span>
+                    <img class="shop-item-image" src="Images/01.jpeg">
+                    <div class="shop-item-details">
+                        <span class="shop-item-price">$29.99</span>
+                        <button class="btn btn-primary shop-item-button" type="button">add to cart.</button>
+                    </div>
+                </div>
+                <div class="shop-item">
+                    <span class="shop-item-title">denim jacket.</span>
+                    <img class="shop-item-image" src="Images/02.jpeg">
+                    <div class="shop-item-details">
+                        <span class="shop-item-price">$54.99</span>
+                        <button class="btn btn-primary shop-item-button"type="button">add to cart.</button>
+                    </div>
+                </div>
+                <div class="shop-item">
+                    <span class="shop-item-title">female t-shirt.</span>
+                    <img class="shop-item-image" src="Images/03.jpeg">
+                    <div class="shop-item-details">
+                        <span class="shop-item-price">$15.99</span>
+                        <button class="btn btn-primary shop-item-button" type="button">add to cart.</button>
+                    </div>
+                </div>
+                <div class="shop-item">
+                    <span class="shop-item-title">female hoodie.</span>
+                    <img class="shop-item-image" src="Images/04.jpeg">
+                    <div class="shop-item-details">
+                        <span class="shop-item-price">$39.99</span>
+                        <button class="btn btn-primary shop-item-button" type="button">add to cart.</button>
+                    </div>
+                </div>
+                <div class="shop-item">
+                    <span class="shop-item-title">long female hoodie-skirt.</span>
+                    <img class="shop-item-image" src="Images/05.jpeg">
+                    <div class="shop-item-details">
+                        <span class="shop-item-price">$21.99</span>
+                        <button class="btn btn-primary shop-item-button" type="button">add to cart.</button>
+                    </div>
+                </div>
+                <div class="shop-item">
+                    <span class="shop-item-title">female leather jacket.</span>
+                    <img class="shop-item-image" src="Images/06.jpeg">
+                    <div class="shop-item-details">
+                        <span class="shop-item-price">$39.99</span>
+                        <button class="btn btn-primary shop-item-button" type="button">add to cart.</button>
+                    </div>
+                </div>
+                <div class="shop-item">
+                    <span class="shop-item-title">male denim jeans.</span>
+                    <img class="shop-item-image" src="Images/07.jpeg">
+                    <div class="shop-item-details">
+                        <span class="shop-item-price">$59.99</span>
+                        <button class="btn btn-primary shop-item-button" type="button">add to cart.</button>
+                    </div>
+                </div>
+                <div class="shop-item">
+                    <span class="shop-item-title">female jacket.</span>
+                    <img class="shop-item-image" src="Images/08.jpeg">
+                    <div class="shop-item-details">
+                        <span class="shop-item-price">$59.99</span>
+                        <button class="btn btn-primary shop-item-button" type="button">add to cart.</button>
+                    </div>
+                </div>
+                <div class="shop-item">
+                    <span class="shop-item-title">male shirt.</span>
+                    <img class="shop-item-image" src="Images/09.jpg">
+                    <div class="shop-item-details">
+                        <span class="shop-item-price">$24.99</span>
+                        <button class="btn btn-primary shop-item-button" type="button">add to cart.</button>
+                    </div>
+                </div>
+                <div class="shop-item">
+                    <span class="shop-item-title">male hoodie. </span>
+                    <img class="shop-item-image" src="Images/10.jpeg">
+                    <div class="shop-item-details">
+                        <span class="shop-item-price">$69.99</span>
+                        <button class="btn btn-primary shop-item-button" type="button">add to cart.</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="shoppingCart" class="container content-section">
+            <h2 class="section-header">shoppping cart.</h2>
+            <div class="cart-row">
+                <span class="cart-item cart-header cart-column">item.</span>
+                <span class="cart-price cart-header cart-column">price.</span>
+                <span class="cart-quantity cart-header cart-column">quantity.</span>
+            </div>
+            <div class="cart-items">
+                
+            </div>
+            <div class="cart-total">
+                <strong class="cart-total-title">total.</strong>
+                <span class="cart-total-price">$0</span>
+            </div>
+            <button class="btn btn-primary btn-purchase" type="button">purchase.</button>
+        </section>
+        
+        
+        <a href="#shoppingCart" class="float">
+            <i class="fa fa-shopping-cart my-float"></i>
+            <b class="my-float-text"></b>
+        </a>
+        
+        
+        <footer class="main-footer">
+            <div class="container main-footer-container">
+                <h3 style="font-size: 40px;color: #0f0326;">shoppp.</h3>
+                <ul class="nav footer-nav">
+                    <li>
+                        <b><a style="font-size: 20px;color: #0f0326;text-decoration:underline" href="http://lazar-ristic.info" target="_blank">lristic </a> - 2020.</b>
+                    </li>
+                    
+                </ul>
+            </div>
+        </footer>
+        
+        <script>
+            var element_to_scroll_to = document.getElementById('shoppingCart');
+            element_to_scroll_to.scrollIntoView();
+        </script>
+        
+        
+    </body>
+</html>

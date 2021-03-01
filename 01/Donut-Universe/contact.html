@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1" name="viewport" />
+    <meta name="theme-color" content="#0bbee9" />
+    <title>Contact | Donut Universe</title>
+    
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/favicon/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192"  href="assets/favicon/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="assets/favicon/favicon-96x96.png">
+    <link rel="manifest" href="assets/favicon/manifest.json">
+    
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/main.css">
+    <link rel="stylesheet" href="assets/css/animsition.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Raleway:900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/hover.css">
+    
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+    <script src="assets/js/animsition.min.js"></script>
+
+</head>
+<body class="contact animsition">
+  
+  <nav class="navbar sticky-top navbar-expand-lg navbar-light bg-light ">
+  <a class="navbar-brand" href="index.html"><img class="logo" src="assets/img/logo.png"></a>
+  <button class="navbar-toggler custom-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+    <div class="navbar-nav ml-auto">
+      <a class="nav-item nav-link animsition-link" href="./index.html">Home <span class="sr-only">(current)</span></a>
+      <a class="nav-item nav-link animsition-link" href="./menu.html">Menu</a>
+      <a class="nav-item nav-link active animsition-link" href="./contact.html">Contact</a>
+    </div>
+  </div>
+</nav>
+   
+   
+   <div class="row">
+      <div class="col-md-12">
+       <center><h1>Contact us</h1>
+       <p>Where can you find us?<br>
+       Working hours:<br>
+       Mon - Sat: 08am - 10pm<br>
+       Sun: 10am - 6pm</p> 
+       </center>
+   </div>
+   </div>
+   <div class="row">
+      <div class="col-md-12">
+       <div class="mapouter"><div class="gmap_canvas"><iframe style="width: 100%;height:400px;" id="gmap_canvas" src="https://maps.google.com/maps?q=new%20york&t=&z=13&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe></div><style>.mapouter{position:relative;text-align:right;height:400px;width:100%;}.gmap_canvas {overflow:hidden;background:none!important;height:400px;width:100%;}</style></div>
+       </div>
+   </div>
+   <br>
+   <div class="row">
+      <div class="col-md-12">
+       <center>
+       <h2>Call us <a class="call-us" href="tel:+123456789">+123456789</a></h2>
+       <h4>or write a message:</h4>
+       </center>
+       </div>
+   </div>
+   
+   <form>
+   <div class="row">
+      
+       <div class="col-md-6 forma-polja-desno">
+           <input class="forma" type="text" name="email" id="email" placeholder="Enter your e-mail">
+       </div>
+       
+       
+       <div class="col-md-6 forma-polja-levo">
+           <input class="forma" type="text" name="subject" id="subject" placeholder="Enter the subject">
+       </div>
+    
+   </div>
+   <br>
+   <div class="row">
+       <div class="col-md-12" style="text-align:center;">
+           <textarea class="forma-tekst" type="text" name="message" id="message" placeholder="Enter your message here"></textarea>
+       </div>
+   </div>
+   
+   <div class="row">
+       
+         <div class="col-md-12" style="text-align: center">
+          
+           <input class="forma-dugme hvr-fade" type="submit" name="submit" id="submit" value="Send message">
+           
+       </div>
+       
+   </div>
+   
+   </form>
+   
+   <br>
+   
+   
+   
+   
+   
+</body>
+<script>
+    $(document).ready(function() {
+        $(".animsition").animsition({
+    inClass: 'fade-in-right-sm',
+    outClass: 'fade-out-right-sm',
+    inDuration: 1500,
+    outDuration: 800,
+    linkElement: '.animsition-link',
+    // e.g. linkElement: 'a:not([target="_blank"]):not([href^="#"])'
+    loading: true,
+    loadingParentElement: 'body', //animsition wrapper element
+    loadingClass: 'animsition-loading',
+    loadingInner: '', // e.g '<img src="loading.svg" />'
+    timeout: false,
+    timeoutCountdown: 5000,
+    onLoadEvent: true,
+    browser: [ 'animation-duration', '-webkit-animation-duration'],
+    // "browser" option allows you to disable the "animsition" in case the css property in the array is not supported by your browser.
+    // The default setting is to disable the "animsition" in a browser that does not support "animation-duration".
+    overlay : false,
+    overlayClass : 'animsition-overlay-slide',
+    overlayParentElement : 'body',
+    transition: function(url){ window.location.href = url; }
+        });
+    });
+</script>
+</html>

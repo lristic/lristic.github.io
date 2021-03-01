@@ -1,0 +1,122 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1" name="viewport" />
+    <meta name="theme-color" content="#0bbee9" />
+
+    <title>Menu | Donut Universe</title>
+    
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/favicon/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192"  href="assets/favicon/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="assets/favicon/favicon-96x96.png">
+    <link rel="manifest" href="assets/favicon/manifest.json">
+
+    <link rel="stylesheet" href="https://unpkg.com/swiper/css/swiper.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/main.css">
+    <link rel="stylesheet" href="assets/css/animsition.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Raleway:900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/hover.css">
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+    <script src="assets/js/animsition.min.js"></script>
+
+</head>
+<body class="menu animsition">
+  
+  <nav class="navbar navbar-expand-lg navbar-light bg-light ">
+  <a class="navbar-brand" href="index.html"><img class="logo" src="assets/img/logo.png"></a>
+  <button class="navbar-toggler custom-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+    <div class="navbar-nav ml-auto">
+      <a class="nav-item nav-link animsition-link" href="./index.html">Home <span class="sr-only">(current)</span></a>
+      <a class="nav-item nav-link active animsition-link" href="./menu.html">Menu</a>
+      <a class="nav-item nav-link animsition-link" href="./contact.html">Contact</a>
+    </div>
+  </div>
+</nav>
+   
+   <br>
+   <center><h1>Choose from our menu</h1></center>
+   <br><br>
+   
+   <div class="row">
+      
+       <div class="col-sm-12" style="text-align: center;">
+           <a class="menu-link animsition-link" href="./donuts.html">Donuts</a>
+       </div>
+    </div>
+     <br><br>
+      <div class="row">
+       <div class="col-sm-12" style="text-align: center;">
+           <a class="menu-link animsition-link" href="./drinks.html">Drinks</a>
+       </div>  
+        
+   </div>
+    
+   
+   <br><br>
+   
+   
+   
+   
+   
+</body>
+<script src="https://unpkg.com/swiper/js/swiper.min.js"></script>
+
+<script>
+    $(document).ready(function() {
+        $(".animsition").animsition({
+    inClass: 'fade-in-right-sm',
+    outClass: 'fade-out-right-sm',
+    inDuration: 1500,
+    outDuration: 800,
+    linkElement: '.animsition-link',
+    // e.g. linkElement: 'a:not([target="_blank"]):not([href^="#"])'
+    loading: true,
+    loadingParentElement: 'body', //animsition wrapper element
+    loadingClass: 'animsition-loading',
+    loadingInner: '', // e.g '<img src="loading.svg" />'
+    timeout: false,
+    timeoutCountdown: 5000,
+    onLoadEvent: true,
+    browser: [ 'animation-duration', '-webkit-animation-duration'],
+    // "browser" option allows you to disable the "animsition" in case the css property in the array is not supported by your browser.
+    // The default setting is to disable the "animsition" in a browser that does not support "animation-duration".
+    overlay : false,
+    overlayClass : 'animsition-overlay-slide',
+    overlayParentElement : 'body',
+    transition: function(url){ window.location.href = url; }
+        });
+    });
+    
+    var swiper = new Swiper('.swiper-container', {
+      effect: 'coverflow',
+      grabCursor: true,
+      centeredSlides: true,
+      slidesPerView: 'auto',
+      loop:true,
+        autoplay:{
+            delay: 2000
+        },
+      coverflowEffect: {
+        rotate: 50,
+        stretch: 0,
+        depth: 100,
+        modifier: 1,
+        slideShadows : true,
+          
+      },
+      pagination: {
+        el: '.swiper-pagination',
+      },
+    });
+
+</script>
+</html>    
