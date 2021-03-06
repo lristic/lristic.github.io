@@ -9,6 +9,7 @@ function pad(number, length) {
 function getMovie() {
             var movie = pad(Math.floor((Math.random() * 1155529) + 1), 7);
             $("#refresh").text("Generating...").prop("disabled", true);
+            
             $.getJSON("https://www.omdbapi.com/?apikey=75892e41&i=tt"+movie, function(data) {
             var title = data.Title;
             var year = data.Year;
@@ -17,6 +18,8 @@ function getMovie() {
             var plot = data.Plot;
             var type = data.Type;
             var genre = data.Genre;
+            var runtime = data.Runtime;
+            
       
             if(genre == "N/A"){
                 genre = "";
@@ -50,11 +53,11 @@ function getMovie() {
             }else if(title.search("Episode") >= 0){
                 getMovie();
             }else{
-                $("#title").text(title);
+                $("#title").text(title + " (" + year + ")");
             }
                 
             if(rating != "N/A" || typeof(rating) == "undefined"){
-                $("#rating").text("Rating: " + rating);
+                $("#rating").text("IMDB Rating: " + rating + "/10");
             }else{
                 $("#rating").text("Rating not available on IMDB");
             }
@@ -64,9 +67,18 @@ function getMovie() {
             }else{
                 $("#actors").text("Actors: " + actors);
             }
+
+            
+            if(plot == "N/A"){
+                $("#plot").text("Plot not available on IMDB");
+            }else{
+                $("#plot").text("Plot:\n" + plot);
+            }
+
+            $("#runtime").text("Length: " + runtime);
+            
       
-      
-            $("#year").text("Year: " + year);
+            
     
     }).always(function() {
         $("#refresh").text("Next").prop("disabled", false);
@@ -126,7 +138,7 @@ document.body.onkeyup = function(e){
             }
                 
             if(rating != "N/A" || rating == "undefined"){
-                $("#rating").text("Rating: " + rating);
+                $("#rating").text("Rating: " + rating + "/10");
             }else{
                 $("#rating").text("Rating not available on IMDB");
             }
@@ -136,9 +148,6 @@ document.body.onkeyup = function(e){
             }else{
                 $("#actors").text("Actors: " + actors);
             }
-      
-      
-            $("#year").text("Year: " + year);
     
     }).always(function() {
         $("#refresh").text("Next").prop("disabled", false);

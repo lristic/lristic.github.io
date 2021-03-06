@@ -4,7 +4,7 @@ html{
 }
 body {
   background-color: #00272B;
-  font-family: 'Montserrat';
+  font-family: 'Rubik', sans-serif;
   color: #E0FF4F;
   margin: 0 auto;
 }
@@ -30,12 +30,17 @@ a {
 
 #title {
   font-size: 25px;
-  font-style:italic;
+  font-style:bold;
+  font-weight:600;
 }
 
 #year {
     font-size: 20px;
     margin-bottom: 0;
+}
+
+#runtime{
+    font-size: 20px;
 }
 
 #rating{
@@ -64,7 +69,7 @@ a {
   padding-left: 20px;
   padding-right: 20px;
   font-size: 20px;
-    font-family:'Montserrat';
+  font-family: 'Rubik', sans-serif;
     border-radius: 10px;
 }
 
@@ -76,12 +81,8 @@ a {
 }
 
 .content {
-    left:0; right:0;
-    top:0; bottom:0;
-    margin:auto;
-    max-width:100%;
-    max-height:100%;
-    overflow:auto;
+    text-align: left;
+    width: 400px;
 }
 
 
