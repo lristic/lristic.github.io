@@ -39,6 +39,7 @@
         <a class="nav-item nav-link js-nav" href="../../pages/js_pages/index.html">JAVASCRIPT</a>
         <a class="nav-item nav-link php-nav" href="../../pages/php_pages/index.html">PHP</a>
         <a class="nav-item nav-link py-nav" href="../../pages/py_pages/index.html">PYTHON</a>
+        <a class="nav-item nav-link git-nav" href="../../pages/git_pages/index.html">GIT</a>
       </div>
     </div>
   </nav>
@@ -47,25 +48,153 @@
 <br>
 <center>
     <h1 style="font-weight: 600;">Uvod u Django</h1>
-    <h4>2.deo</h4>
+    <h4>3.deo</h4>
 
 </center>
   <hr style="background-color: #00041b;width: 70%;">
-  <p>U današnjem tutorijalu, nastavićemo rad sa Djangom. Sredićemo prvu stranicu, 
-  pričati o fajlovima koji se već nalaze u folderu i videti šta radimo kada dodamo još foldera.</p>
-  
+  <p>
+  U današnjem tutorijalu, nastavićemo rad sa Djangom. Stilizovaćemo index stranicu i pošto će se na njoj nalaziti dugmad 
+  Sign Up ili Sign In, njih ćemo odgovarajuće linkovati ka novim stranicama.
+  </p>
 
-  <p>Ovde ću stati, ima dosta stvari za preći, 
+  <p>
+  Do sada imamo stranicu na kojoj samo imamo h1 naslov Index page. Pošto je poenta tutorijala Django, a ne HTML+CSS,
+  neću ulaziti u to kako da stilizujete stranicu, okačiću svoj kod i izgled, pa ukoliko želite isto tako, kopirajte :)
+  </p>
+
+  <p>
+  Ono što se tiče Djanga jeste kako da linkujemo naše .css fajlove, slike ili bilo šta što nam je potrebno (ovo se zovu statični fajlovi) 
+  na stranici.
+  U root direktorijumu, istom u kom su index i repz direktorijumi, pravimo direktorijum <i>assets</i>, a u njemu za sad samo direktorijum <i>css</i> 
+  i u taj direktorijum stavljamo fajl <i>style.css</i>.
+  </p>
+  <p>
+  U <i>settings.py</i> fajl dodajemo na dno fajla novu promenljivu <b><i>STATICFILES_DIRS = (os.path.join(BASE_DIR), 'assets')</i></b>.
+  Šta radi os.path.join? Na BASE_DIR što je naš root direktorijum, dodaje 'assets' na putanju tako da će se statični fajlovi nalaziti na putanji
+  <i>BASE_DIR/assets</i>.
+  </p>
+
+  <p>
+  U .html fajlovima statične fajlove učitavamo na sledeći način: <br>
+  <!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #007700">&lt;link</span> <span style="color: #0000CC">rel=</span><span style="background-color: #fff0f0">&quot;stylesheet&quot;</span> <span style="color: #0000CC">href=</span><span style="background-color: #fff0f0">&quot;</span><span style="color: #557799">{%</span> <span style="color: #008800; font-weight: bold">static</span> <span style="background-color: #fff0f0">&#39;css/style.css&#39;</span> <span style="color: #557799">%}</span><span style="background-color: #fff0f0">&quot;</span><span style="color: #007700">&gt;</span>
+</pre></div>
+  Ključna reč static govori Djangu gde da traži fajl, a prethodno smo definisali da će to biti u direktorijumu assets. Sada možemo
+  podešavati naš <i>style.css</i> po želji.
+  </p>
+
+  <p>Nakon sređivanja, dobijamo: </p>
+  <img style="max-width: 75%; height: auto;" src="djangoPrvaStrana.png" />
+  <br>
+<br>
+  <p>
+  Sada ćemo napraviti novu aplikaciju pod nazivom <b>login_register</b> koja će sadržati svu logiku i kod iza logovanja i registrovanja.
+  <!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%">python manage<span style="color: #333333">.</span>py startapp login_register
+</pre></div>
+<br>
+  Nakon toga, potrebno je da aplikaciju registrujemo u <i>settings.py</i>, pa na dno INSTALLED_APPS dodajemo 'login_register'.
+  Django sada zna za postojanje ove aplikacije, a mi pravimo u <i>templates</i> direktorijumu novi .html fajl pod nazivom <i>login.html</i>.
+  Ovo će nam biti stranica na koju dođemo kliktanjem na dugme Sign In. Pored toga pravimo i stranicu register.html za dugme Sign Up.
+  </p>
+
+  <h5>Header i footer </h5>
+  <p>
+  Napraviću malu digresiju, jer se sada pojavljuje više strana i samim tim se može desiti da se dosta koda ponavlja, što želimo da izbegnemo.
+  U <i>templates</i> direktorijumu ćemo napraviti još dve stranice, <i>header.html</i> i <i>footer.html</i>.
+  U <i>header.html</i> će ići sav kod pre otvarajućeg <code>body</code> taga (uključujući i njega) iz <i>index.html</i>, a u <i>footer.html</i>
+  sve posle zatvarajućeg <code>body</code> taga (uključujući i njega).
+  Sada će nam <i>index.html</i> izgledati ovako:
+  <!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #007700">&lt;div</span> <span style="color: #0000CC">class=</span><span style="background-color: #fff0f0">&quot;container&quot;</span><span style="color: #007700">&gt;</span>
+    <span style="color: #007700">&lt;div</span> <span style="color: #0000CC">class=</span><span style="background-color: #fff0f0">&quot;row&quot;</span><span style="color: #007700">&gt;</span>
+        <span style="color: #007700">&lt;div</span> <span style="color: #0000CC">class=</span><span style="background-color: #fff0f0">&quot;col-md-12 welcome-index&quot;</span><span style="color: #007700">&gt;</span>
+            <span style="color: #007700">&lt;h1&gt;</span>Welcome to repz<span style="color: #007700">&lt;b</span> <span style="color: #0000CC">style=</span><span style="background-color: #fff0f0">&quot;color: #ef3e36&quot;</span><span style="color: #007700">&gt;</span>.<span style="color: #007700">&lt;/b&gt;&lt;/h1&gt;</span>
+            <span style="color: #007700">&lt;h4&gt;</span>Track your training progress<span style="color: #007700">&lt;/h4&gt;</span>
+            <span style="color: #007700">&lt;br&gt;</span>
+            
+            <span style="color: #007700">&lt;a</span> <span style="color: #0000CC">href=</span><span style="background-color: #fff0f0">&quot;login/&quot;</span><span style="color: #007700">&gt;&lt;button</span> <span style="color: #0000CC">class=</span><span style="background-color: #fff0f0">&quot;signin-button-index&quot;</span><span style="color: #007700">&gt;</span>Sign In<span style="color: #007700">&lt;/button&gt;&lt;/a&gt;</span>
+            <span style="color: #007700">&lt;a</span> <span style="color: #0000CC">href=</span><span style="background-color: #fff0f0">&quot;register/&quot;</span><span style="color: #007700">&gt;&lt;button</span> <span style="color: #0000CC">class=</span><span style="background-color: #fff0f0">&quot;signup-button-index&quot;</span><span style="color: #007700">&gt;</span>Sign Up<span style="color: #007700">&lt;/button&gt;&lt;/a&gt;</span>
+            
+            
+            
+        <span style="color: #007700">&lt;/div&gt;</span>
+    <span style="color: #007700">&lt;/div&gt;</span>
+<span style="color: #007700">&lt;/div&gt;</span>
+</pre></div>
+<br>
+Na vrh strane dodajemo <code>{% include 'header.html' %}</code>, a na kraj strane<code> {% include 'footer.html' %}.</code><br>
+Sada index.html, izgleda ovako: 
+<!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #557799">{%</span><span style="color: #008800; font-weight: bold">include</span> <span style="background-color: #fff0f0">&#39;header.html&#39;</span><span style="color: #557799">%}</span>
+  <span style="color: #007700">&lt;div</span> <span style="color: #0000CC">class=</span><span style="background-color: #fff0f0">&quot;container&quot;</span><span style="color: #007700">&gt;</span>
+  <span style="color: #007700">&lt;div</span> <span style="color: #0000CC">class=</span><span style="background-color: #fff0f0">&quot;row&quot;</span><span style="color: #007700">&gt;</span>
+      <span style="color: #007700">&lt;div</span> <span style="color: #0000CC">class=</span><span style="background-color: #fff0f0">&quot;col-md-12 welcome-index&quot;</span><span style="color: #007700">&gt;</span>
+          <span style="color: #007700">&lt;h1&gt;</span>Welcome to repz<span style="color: #007700">&lt;b</span> <span style="color: #0000CC">style=</span><span style="background-color: #fff0f0">&quot;color: #ef3e36&quot;</span><span style="color: #007700">&gt;</span>.<span style="color: #007700">&lt;/b&gt;&lt;/h1&gt;</span>
+          <span style="color: #007700">&lt;h4&gt;</span>Track your training progress<span style="color: #007700">&lt;/h4&gt;</span>
+          <span style="color: #007700">&lt;br&gt;</span>
+          
+          <span style="color: #007700">&lt;a</span> <span style="color: #0000CC">href=</span><span style="background-color: #fff0f0">&quot;login/&quot;</span><span style="color: #007700">&gt;&lt;button</span> <span style="color: #0000CC">class=</span><span style="background-color: #fff0f0">&quot;signin-button-index&quot;</span><span style="color: #007700">&gt;</span>Sign In<span style="color: #007700">&lt;/button&gt;&lt;/a&gt;</span>
+          <span style="color: #007700">&lt;a</span> <span style="color: #0000CC">href=</span><span style="background-color: #fff0f0">&quot;register/&quot;</span><span style="color: #007700">&gt;&lt;button</span> <span style="color: #0000CC">class=</span><span style="background-color: #fff0f0">&quot;signup-button-index&quot;</span><span style="color: #007700">&gt;</span>Sign Up<span style="color: #007700">&lt;/button&gt;&lt;/a&gt;</span>
+          
+          
+          
+      <span style="color: #007700">&lt;/div&gt;</span>
+  <span style="color: #007700">&lt;/div&gt;</span>
+<span style="color: #007700">&lt;/div&gt;</span>
+<span style="color: #557799">{%</span><span style="color: #008800; font-weight: bold">include</span> <span style="background-color: #fff0f0">&#39;footer.html&#39;</span><span style="color: #557799">%}</span>
+</pre></div>
+<br>
+Sada kada dodajemo neku novu biblioteku, možemo je dodati samo u <i>header.html</i>, 
+ne moramo na svakoj strani pojedinačno (npr. da imamo 10 strana, 10 puta bismo radili istu stvar).
+
+  </p>
+  
+  <br>
+  <p>
+    Sada možemo da se vratimo na naše login.html i register.html strane.
+    U ovom tutorijalu ću samo linkovati ka njima, a u sledećem ih dorađivati.
+    Za početak, na stranama dodamo samo h1 naslov sa imenom strane, dakle Login page i Register page.
+    U <i>views.py</i> fajlu u login_register direktorijumu pravimo funkcije: 
+    <!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #008800; font-weight: bold">def</span> <span style="color: #0066BB; font-weight: bold">login</span>(request):
+      <span style="color: #008800; font-weight: bold">return</span> render(request, <span style="background-color: #fff0f0">&#39;login.html&#39;</span>)
+
+<span style="color: #008800; font-weight: bold">def</span> <span style="color: #0066BB; font-weight: bold">register</span>(request):
+          <span style="color: #008800; font-weight: bold">return</span> render(request, <span style="background-color: #fff0f0">&#39;register.html&#39;</span>)
+      </pre></div>
+      
+      <br>
+      Ove funkcije će nam prikazati naše strane prilikom poziva. Pravimo u direktorijumu login_register novi fajl <i>urls.py</i> i
+      u njega stavljamo: 
+      <!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #008800; font-weight: bold">from</span> <span style="color: #0e84b5; font-weight: bold">django.urls</span> <span style="color: #008800; font-weight: bold">import</span> path
+<span style="color: #008800; font-weight: bold">from</span> <span style="color: #0e84b5; font-weight: bold">.</span> <span style="color: #008800; font-weight: bold">import</span> views
+
+urlpatterns <span style="color: #333333">=</span> [
+    path(<span style="background-color: #fff0f0">&#39;login/&#39;</span>, views<span style="color: #333333">.</span>login),
+    path(<span style="background-color: #fff0f0">&#39;register/&#39;</span>, views<span style="color: #333333">.</span>register)
+]
+</pre></div>
+<br>
+Dakle, kada je u linku 'login/' zvaćemo funkciju login koja će renderovati <i>login.html</i> stranicu i slično za 'register/'.
+
+Sada, kada kliknemo na Sign In odvešće nas na Login stranicu, a kada kliknemo na Sign Up, odvešće nas na Register stranicu.
+Njih ćemo u sledećem tutorijalu detaljnije obraditi.
+
+      
+
+  </p>
+  <hr style="background-color: black;"/>
+  <p>Ovde ću stati, 
   ako nešto ne radi slobodno mi pišite na <a href="https://instagram.com/koderizam" target="_blank">Instagramu</a> 
-  ili <a href="https://facebook.com/koderizam" target="_blank">Facebooku</a>.</p>
+  ili <a href="https://facebook.com/koderizam" target="_blank">Facebooku</a>.
+    Kodove ovog tutorijala možete naći na <a href="https://github.com/lristic/repz" target="_blank">GitHubu</a>.
+</p>
+  <a href="django1.html" target="_blank">Uvod u Django 1.deo</a><br>
+  <a href="django2.html" target="_blank">Uvod u Django 2.deo</a>
                                 
                                 <br><br>
                                 
                                 
                                 <p style="font-size: 25px;">Hvala što ste čitali, nadam se da je bilo korisno. :)</p>
 <div class="meta">
-			<time class="published" datetime="2019-10-16">28. septembar 2020.</time>
-			<a href="http://lazar-ristic.info" target="_blank" class="author"><span class="name">Lazar Ristić</span></a>
+			<time class="published" datetime="2019-10-16">13. mart 2021.</time>
+			<a href="https://lristic.github.io" target="_blank" class="author"><span class="name">Lazar Ristić</span></a>
 			<i style="font-size: 50px;color:orangered;padding-right: 20px;" class="fab fa-html5"></i>
 		</div>
         <br><br>
